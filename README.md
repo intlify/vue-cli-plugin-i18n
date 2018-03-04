@@ -4,8 +4,6 @@
 
 Vue CLI 3.x plugin to add vue-i18n to your Vue Project
 
-> NOTE: :warn: WIP
-
 
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffoling
