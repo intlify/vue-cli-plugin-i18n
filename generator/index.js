@@ -4,13 +4,44 @@ module.exports = (api, options, rootOptions) => {
   debug('options', options)
   debug('rootOptions', rootOptions)
 
-  api.extendPackage({
+  const { enableInSFC } = options
+
+  /*
+   * extend packages
+   */
+
+  const pkg = {
     dependencies: {
       'vue-i18n': '^7.4.2'
-    }
-  })
+    },
+    vue: {
+      pluginOptions: { enableInSFC }
+    },
+  }
 
-  api.render('./templates', { ...options })
+  if (enableInSFC) {
+    pkg.devDependencies = {
+      '@kazupon/vue-i18n-loader': '^0.3.0'
+    }
+  }
+
+  api.extendPackage(pkg)
+
+  /* 
+   * render templates
+   */
+
+  // basic templates
+  api.render('./templates/basic', { ...options })
+
+  // locale messages in SFC examples
+  if (enableInSFC) {
+    api.render('./templates/sfc', { ...options })
+  }
+
+  /*
+   * other processes
+   */
 
   api.onCreateComplete(() => {
     // Inejct to main.js
