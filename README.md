@@ -7,6 +7,10 @@ Vue CLI 3.x plugin to add vue-i18n to your Vue Project
 > NOTE: :warn: WIP
 
 
+## :star: Features
+- [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffoling
+- Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
+
 ## :rocket: Getting Started
 If yon don't have a project created with Vue CLI 3.x:
 
@@ -29,6 +33,17 @@ Invoke the plugin:
 $ vue invoke i18n
 ```
 
+## :wrench: Configrations
+
+`vue-cli-plugin-i18n` have some plugin options in `vue.config.js`:
+
+```js
+module.exports = {
+  pluginOptions: {
+    enalbeInSFC: false // Locale messages in Single file components
+  }
+}
+```
 
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/CHANGELOG.md).
