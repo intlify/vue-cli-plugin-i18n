@@ -16,7 +16,7 @@ module.exports = (api, options, rootOptions) => {
     },
     vue: {
       pluginOptions: { enableInSFC }
-    },
+    }
   }
 
   if (enableInSFC) {
@@ -27,7 +27,7 @@ module.exports = (api, options, rootOptions) => {
 
   api.extendPackage(pkg)
 
-  /* 
+  /*
    * render templates
    */
 

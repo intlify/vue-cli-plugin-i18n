@@ -8,7 +8,7 @@ module.exports = (api, options) => {
 
   api.chainWebpack(webpackConfig => {
     if (enableInSFC) {
-      const rule = webpackConfig.module
+      webpackConfig.module
         .rule('vue')
         .use('vue-loader')
         .tap(options =>
