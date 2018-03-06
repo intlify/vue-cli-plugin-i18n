@@ -20,15 +20,7 @@ Install the plugin into your project:
 
 ```sh
 $ cd my-vue-app
-$ npm i -D vue-cli-plugin-i18n
-$ # OR:
-$ yarn add -D vue-cli-plugin-i18n
-```
-
-Invoke the plugin:
-
-```sh
-$ vue invoke i18n
+$ vue add i18n
 ```
 
 ## :wrench: Configrations
