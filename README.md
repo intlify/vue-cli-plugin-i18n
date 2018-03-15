@@ -6,7 +6,7 @@ Vue CLI 3.x plugin to add vue-i18n to your Vue Project
 
 
 ## :star: Features
-- [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffoling
+- [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
 
 ## :rocket: Getting Started
