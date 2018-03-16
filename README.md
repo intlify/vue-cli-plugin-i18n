@@ -43,6 +43,9 @@ Details changes for each release are documented in the [CHANGELOG.md](https://gi
 Please make sure to read the [Issue Reporting Checklist](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
 
+## :white_check_mark: TODO
+Managed with [GitHub Projects](https://github.com/kazupon/vue-cli-plugin-i18n/projects/1)
+
 ## :muscle: Contribution
 Please make sure to read the [Contributing Guide](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/.github/CONTRIBUTING.md) before making a pull request.
 
