@@ -10,8 +10,7 @@
     "url": "https://github.com/kazupon/vue-cli-plugin-i18n/issues"
   },
   "dependencies": {
-    "debug": "^3.1.0",
-    "deepmerge": "^2.0.1"
+    "debug": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-0",
