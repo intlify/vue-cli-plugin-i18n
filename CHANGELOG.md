@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.1.1...v0.1.2) (2018-05-15)
+
+
+### :bug: Bug Fixes
+
+* **plugin:** fix custom block error for vue-loader v15 ([27f58e5](https://github.com/kazupon/vue-cli-plugin-i18n/commit/27f58e5)), closes [#5](https://github.com/kazupon/vue-cli-plugin-i18n/issues/5)
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.1.0...v0.1.1) (2018-03-15)
 
