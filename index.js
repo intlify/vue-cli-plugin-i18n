@@ -1,4 +1,3 @@
-const merge = require('deepmerge')
 const debug = require('debug')('vue-cli-plugin-i18n:service')
 
 module.exports = (api, options) => {
@@ -9,16 +8,12 @@ module.exports = (api, options) => {
   api.chainWebpack(webpackConfig => {
     if (enableInSFC) {
       webpackConfig.module
-        .rule('vue')
-        .use('vue-loader')
-        .tap(options =>
-          merge(options, {
-            loaders: {
-              i18n: '@kazupon/vue-i18n-loader'
-            }
-          })
-        )
-        .end()
+        .rule('i18n')
+          .resourceQuery(/blockType=i18n/)
+          .use('i18n')
+            .loader('@kazupon/vue-i18n-loader')
+            .end()
+          .end()
     }
   })
 }
