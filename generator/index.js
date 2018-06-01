@@ -1,9 +1,4 @@
-const debug = require('debug')('vue-cli-plugin-i18n:generator')
-
 module.exports = (api, options, rootOptions) => {
-  debug('options', options)
-  debug('rootOptions', rootOptions)
-
   const { enableInSFC } = options
 
   /*
