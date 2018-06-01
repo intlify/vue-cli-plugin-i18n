@@ -1,8 +1,4 @@
-const debug = require('debug')('vue-cli-plugin-i18n:service')
-
 module.exports = (api, options) => {
-  debug('options', options)
-
   const { enableInSFC } = options.pluginOptions
 
   api.chainWebpack(webpackConfig => {
