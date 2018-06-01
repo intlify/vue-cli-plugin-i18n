@@ -34,7 +34,7 @@
   },
   "scripts": {
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
-    "lint": "eslint --ext .js .",
+    "lint": "eslint --fix --ext .js .",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run lint"
   }
