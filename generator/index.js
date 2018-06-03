@@ -1,63 +1,99 @@
+const fs = require('fs')
+const path = require('path')
+
+function checkInstalled (target) {
+  let ret = true
+  try {
+    const resolveModule = require(path.resolve(target))
+    if (!resolveModule) { ret = false }
+  } catch (e) {
+    ret = false
+  }
+  return ret
+}
+
 module.exports = (api, options, rootOptions) => {
   const { enableInSFC } = options
 
-  /*
-   * extend packages
-   */
+  try {
+    const tsPath = api.resolve('src/main.ts')
+    const jsPath = api.resolve('src/main.js')
+    const tsExists = fs.existsSync(tsPath)
+    const jsExists = fs.existsSync(jsPath)
 
-  const pkg = {
-    dependencies: {
-      'vue-i18n': '^7.4.2'
-    },
-    vue: {
-      pluginOptions: { enableInSFC }
+    if (!tsExists && !jsExists) {
+      api.exitLog('No entry found', 'error')
     }
-  }
 
-  if (enableInSFC) {
-    pkg.devDependencies = {
-      '@kazupon/vue-i18n-loader': '^0.3.0'
+    const lang = tsExists && api.hasPlugin('typescript') ? 'ts' : 'js'
+    const classComponent = tsExists &&
+      checkInstalled('./node_modules/vue-class-component/package.json') &&
+      checkInstalled('./node_modules/vue-property-decorator/package.json')
+    const additionalOptions = { ...options, ...{ lang, classComponent } }
+
+    /*
+     * extend packages
+     */
+
+    const pkg = {
+      dependencies: {
+        'vue-i18n': '^7.8.0'
+      },
+      vue: {
+        pluginOptions: { enableInSFC }
+      }
     }
+
+    if (enableInSFC) {
+      pkg.devDependencies = {
+        '@kazupon/vue-i18n-loader': '^0.3.0'
+      }
+    }
+
+    if (lang === 'ts') {
+      const devTsDependencies = {}
+      if (!checkInstalled('./node_modules/@types/webpack/package.json')) {
+        devTsDependencies['@types/webpack'] = '^4.4.0'
+      }
+      if (!checkInstalled('./node_modules/@types/webpack-env/package.json')) {
+        devTsDependencies['@types/webpack-env'] = '^1.13.6'
+      }
+      pkg.devDependencies = { ...pkg.devDependencies, ...devTsDependencies }
+    }
+
+    api.extendPackage(pkg)
+
+    /*
+     * render templates
+     */
+
+    // common i18n templates
+    api.render('./templates/common', { ...additionalOptions })
+
+    // i18n templates for program language
+    api.render(`./templates/${lang}`, { ...additionalOptions })
+
+    // locale messages in SFC examples
+    if (enableInSFC) {
+      api.render('./templates/sfc', { ...additionalOptions })
+    }
+
+    /*
+     * Modify main.(js|ts)
+     */
+    const file = lang === 'ts' ? 'src/main.ts' : 'src/main.js'
+    api.injectImports(file, `import i18n from './i18n'`)
+    api.injectRootOptions(file, `i18n,`)
+  } catch (e) {
+    api.exitLog(`unexpected error in vue-cli-plugin-i18n: ${e.message}`, 'error')
   }
 
-  api.extendPackage(pkg)
-
-  /*
-   * render templates
-   */
-
-  // basic templates
-  api.render('./templates/basic', { ...options })
-
-  // locale messages in SFC examples
-  if (enableInSFC) {
-    api.render('./templates/sfc', { ...options })
-  }
-
-  /*
-   * other processes
-   */
-
-  api.onCreateComplete(() => {
-    // Inejct to main.js
-    // NOTE: bollow vue-cli-plugin-apollo
-
-    const fs = require('fs')
-
-    const mainPath = api.resolve('./src/main.js')
-    let content = fs.readFileSync(mainPath, { encoding: 'utf8' })
-
-    const lines = content.split(/\r?\n/g).reverse()
-
-    // Inject import
-    const lastImportIndex = lines.findIndex(line => line.match(/^import/))
-    lines[lastImportIndex] += `\nimport i18n from './i18n'`
-
-    // Modify app
-    const appIndex = lines.findIndex(line => line.match(/new Vue/))
-    lines[appIndex] += `\n  i18n,`
-
-    content = lines.reverse().join('\n')
-    fs.writeFileSync(mainPath, content, { encoding: 'utf8' })
+  api.postProcessFiles(files => {
+    if (!api.hasPlugin('typescript')) { return }
+    const tsConfigRaw = files['tsconfig.json']
+    const tsConfig = JSON.parse(tsConfigRaw)
+    tsConfig.compilerOptions.types.push('webpack')
+    tsConfig.compilerOptions.types.push('webpack-env')
+    files['tsconfig.json'] = JSON.stringify(tsConfig, null, 2)
   })
 }
