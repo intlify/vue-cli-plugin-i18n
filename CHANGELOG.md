@@ -1,3 +1,12 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.1.2...v0.2.0) (2018-06-03)
+
+
+### :star: New Features
+
+* typescript project scaffolding ([c053474](https://github.com/kazupon/vue-cli-plugin-i18n/commit/c053474)), closes [#3](https://github.com/kazupon/vue-cli-plugin-i18n/issues/3)
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.1.1...v0.1.2) (2018-05-15)
 
