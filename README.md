@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
 
-Vue CLI 3.x plugin to add vue-i18n to your Vue Project
+Vue CLI 3 plugin to add vue-i18n to your Vue Project
 
 
 ## :star: Features
@@ -10,7 +10,7 @@ Vue CLI 3.x plugin to add vue-i18n to your Vue Project
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
 
 ## :rocket: Getting Started
-If yon don't have a project created with Vue CLI 3.x:
+If yon don't have a project created with Vue CLI 3:
 
 ```sh
 $ vue create my-vue-app
