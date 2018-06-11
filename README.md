@@ -8,20 +8,34 @@ Vue CLI 3 plugin to add vue-i18n to your Vue Project
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
+- Env Variables
 
 ## :rocket: Getting Started
 If yon don't have a project created with Vue CLI 3:
 
 ```sh
-$ vue create my-vue-app
+vue create my-vue-app
 ```
 
 Install the plugin into your project:
 
 ```sh
-$ cd my-vue-app
-$ vue add i18n
+cd my-vue-app
+vue add i18n
 ```
+
+## :clipboard: Env variables
+When vue-i18n code files had been scaffolded into your project, the following env variables generate into `.env`:
+
+- **`VUE_APP_I18N_LOCALE`**
+
+  The locale of project localization, default `en`.
+
+- **`VUE_APP_I18N_FALLBACK_LOCALE`**
+
+  The locale of project fallback localization, default `en`.
+
+These env variables are read in `src/i18n.(js|ts)`.
 
 ## :wrench: Configrations
 
