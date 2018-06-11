@@ -4,6 +4,6 @@ module.exports = {
   },
   rules: {
     indent: ['error', 2, { 'MemberExpression': 'off' }],
-    'vue-libs/no-async-functions': 2
+    'object-curly-spacing': ['error', 'always']
   }
 }
