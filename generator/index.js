@@ -109,23 +109,18 @@ module.exports = (api, options, rootOptions) => {
     const envPath = api.resolve('.env')
     let content = exists(envPath) ? readFile(envPath) : ''
 
-    if (content.indexOf('VUE_APP_I18N_LOCALE=') === -1) {
-      content += `VUE_APP_I18N_LOCALE=${locale}\n`
-    } else {
-      content = content.replace(
-        /VUE_APP_I18N_LOCALE=(.*)\n/,
-        `VUE_APP_I18N_LOCALE=${locale}`
-      )
+    function buildEnvVariable (env, pattern, value) {
+      const re = new RegExp(`${pattern}=(.*)\\n`)
+      if (env.indexOf(`${pattern}=`) === -1) {
+        env += `${pattern}=${value}\n`
+      } else {
+        env = env.replace(re, `${pattern}=${value}`)
+      }
+      return env
     }
 
-    if (content.indexOf('VUE_APP_I18N_FALLBACK_LOCALE=') === -1) {
-      content += `VUE_APP_I18N_FALLBACK_LOCALE=${fallbackLocale}\n`
-    } else {
-      content = content.replace(
-        /VUE_APP_I18N_FALLBACK_LOCALE=(.*)\n/,
-        `VUE_APP_I18N_FALLBACK_LOCALE=${fallbackLocale}`
-      )
-    }
+    content = buildEnvVariable(content, 'VUE_APP_I18N_LOCALE', locale)
+    content = buildEnvVariable(content, 'VUE_APP_I18N_FALLBACK_LOCALE', fallbackLocale)
 
     if (!writeFile(envPath, content)) {
       api.exitLog(`cannot write ${envPath}`, 'error')
