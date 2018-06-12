@@ -5,6 +5,26 @@ const {
   writeFile,
   readFile
 } = require('../utils')
+const dotenv = require('dotenv')
+
+function readEnv (path) {
+  let ret = {}
+  try {
+    ret = dotenv.parse(Buffer.from(readFile(path)))
+  } catch (e) {
+    console.warn('readEnv error:', e.message)
+    ret = {}
+  }
+  return ret
+}
+
+function buildEnvContent (values) {
+  let content = ''
+  Object.keys(values).forEach(key => {
+    content += `${key}=${values[key]}\n`
+  })
+  return content
+}
 
 module.exports = (api, options, rootOptions) => {
   const { locale, fallbackLocale, enableInSFC } = options
@@ -17,6 +37,7 @@ module.exports = (api, options, rootOptions) => {
 
     if (!tsExists && !jsExists) {
       api.exitLog('No entry found', 'error')
+      return
     }
 
     const lang = tsExists && api.hasPlugin('typescript') ? 'ts' : 'js'
@@ -77,6 +98,7 @@ module.exports = (api, options, rootOptions) => {
     api.injectRootOptions(file, `i18n,`)
   } catch (e) {
     api.exitLog(`unexpected error in vue-cli-plugin-i18n: ${e.message}`, 'error')
+    return
   }
 
   api.onCreateComplete(() => {
@@ -88,9 +110,10 @@ module.exports = (api, options, rootOptions) => {
       if (!exists(path)) {
         if (!writeFile(path, defaultLocaleMessages)) {
           api.exitLog(`cannot make ${path}`, 'error')
+          return
         }
       } else {
-        console.warn(`already exist ${path}`)
+        api.exitLog(`already exist ${path}`, 'info')
       }
     }
 
@@ -98,6 +121,7 @@ module.exports = (api, options, rootOptions) => {
     if (!exists(localesDirPath)) {
       if (!mkdir(localesDirPath)) {
         api.exitLog(`cannot make ${localesDirPath}`, 'error')
+        return
       }
     }
 
@@ -107,23 +131,21 @@ module.exports = (api, options, rootOptions) => {
     }
 
     const envPath = api.resolve('.env')
-    let content = exists(envPath) ? readFile(envPath) : ''
+    let envVars = exists(envPath) ? readEnv(envPath) : {}
 
-    function buildEnvVariable (env, pattern, value) {
-      const re = new RegExp(`${pattern}=(.*)\\n`)
-      if (env.indexOf(`${pattern}=`) === -1) {
-        env += `${pattern}=${value}\n`
-      } else {
-        env = env.replace(re, `${pattern}=${value}`)
-      }
-      return env
+    if (envVars['VUE_APP_I18N_LOCALE']) {
+      api.exitLog(`overwrite VUE_APP_I18N_LOCALE at ${envPath}`, 'info')
     }
+    envVars['VUE_APP_I18N_LOCALE'] = locale
 
-    content = buildEnvVariable(content, 'VUE_APP_I18N_LOCALE', locale)
-    content = buildEnvVariable(content, 'VUE_APP_I18N_FALLBACK_LOCALE', fallbackLocale)
+    if (envVars['VUE_APP_I18N_FALLBACK_LOCALE']) {
+      api.exitLog(`overwrite VUE_APP_I18N_FALLBACK_LOCALE at ${envPath}`, 'info')
+    }
+    envVars['VUE_APP_I18N_FALLBACK_LOCALE'] = fallbackLocale
 
-    if (!writeFile(envPath, content)) {
-      api.exitLog(`cannot write ${envPath}`, 'error')
+    if (!writeFile(envPath, buildEnvContent(envVars))) {
+      api.exitLog(`cannot write to ${envPath}`, 'error')
+      return
     }
   })
 
