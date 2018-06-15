@@ -1,5 +1,10 @@
 const fs = require('fs')
 const path = require('path')
+const dotenv = require('dotenv')
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
 
 function checkInstalled (target) {
   let ret = true
@@ -54,10 +59,40 @@ function readFile (path) {
   return ret
 }
 
+function readEnv (path) {
+  let ret = {}
+  try {
+    ret = dotenv.parse(Buffer.from(readFile(path)))
+  } catch (e) {
+    console.warn('readEnv error:', e.message)
+    ret = {}
+  }
+  return ret
+}
+
+function sortObject (obj, order = 'asc') {
+  const keys = Object.keys(obj)
+  const sortedKeys = order === 'asc' ? keys.sort() : keys.reverse()
+  return sortedKeys.reduce((val, key) => {
+    const v = obj[key]
+    if (isObject(v)) {
+      val[key] = sortObject(v, order)
+    } else if (Array.isArray(v)) {
+      val[key] = order === 'asc' ? v.sort() : v.reverse()
+    } else {
+      val[key] = v
+    }
+    return val
+  }, {})
+}
+
 module.exports = {
+  isObject,
   checkInstalled,
   exists,
   mkdir,
   writeFile,
-  readFile
+  readFile,
+  readEnv,
+  sortObject
 }
