@@ -1,3 +1,14 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.2.0...v0.3.0) (2018-06-15)
+
+
+### :star: New Features
+
+* env variables ([4b64d81](https://github.com/kazupon/vue-cli-plugin-i18n/commit/4b64d81))
+* localization editor ([941238b](https://github.com/kazupon/vue-cli-plugin-i18n/commit/941238b))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.1.2...v0.2.0) (2018-06-03)
 
