@@ -227,11 +227,15 @@ module.exports = api => {
       tooltip: 'Localizations'
     })
 
-    api.addClientAddon({
-      id: 'vue-i18n',
-      path: path.resolve(__dirname, './client-addon-dist')
-      //url: 'http://localhost:8043/index.js'
-    })
+    const clientAddonOptions = { id: 'vue-i18n' }
+    if (!process.env.VUE_I18N_UI_DEV) {
+      clientAddonOptions['path'] = path.resolve(__dirname, './client-addon-dist')
+    } else {
+      clientAddonOptions['url'] = 'http://localhost:8043/index.js'
+    }
+    debug('clientAddonOptions', clientAddonOptions)
+
+    api.addClientAddon(clientAddonOptions)
   } catch (e) {
     console.error('unexpted error', e.message)
   }
