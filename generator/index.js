@@ -1,3 +1,4 @@
+const debug = require('debug')('vue-cli-plugin-i18n:generator')
 const {
   checkInstalled,
   exists,
@@ -28,23 +29,15 @@ function buildEnvContent (values) {
 
 module.exports = (api, options, rootOptions) => {
   const { locale, fallbackLocale, enableInSFC } = options
+  debug('options', options)
+  debug('rootOptions', rootOptions)
 
   try {
-    const tsPath = api.resolve('src/main.ts')
-    const jsPath = api.resolve('src/main.js')
-    const tsExists = exists(tsPath)
-    const jsExists = exists(jsPath)
-
-    if (!tsExists && !jsExists) {
-      api.exitLog('No entry found', 'error')
-      return
-    }
-
-    const lang = tsExists && api.hasPlugin('typescript') ? 'ts' : 'js'
-    const classComponent = tsExists &&
-      checkInstalled('./node_modules/vue-class-component/package.json') &&
+    const lang = api.hasPlugin('typescript') ? 'ts' : 'js'
+    const classComponent = checkInstalled('./node_modules/vue-class-component/package.json') &&
       checkInstalled('./node_modules/vue-property-decorator/package.json')
     const additionalOptions = { ...options, ...{ lang, classComponent } }
+    debug('additionalOptions', additionalOptions)
 
     /*
      * extend packages
@@ -75,6 +68,7 @@ module.exports = (api, options, rootOptions) => {
       }
       pkg.devDependencies = { ...pkg.devDependencies, ...devTsDependencies }
     }
+    debug('pkg', pkg)
 
     api.extendPackage(pkg)
 
@@ -94,6 +88,7 @@ module.exports = (api, options, rootOptions) => {
      * Modify main.(js|ts)
      */
     const file = lang === 'ts' ? 'src/main.ts' : 'src/main.js'
+    debug('target file', file)
     api.injectImports(file, `import i18n from './i18n'`)
     api.injectRootOptions(file, `i18n,`)
   } catch (e) {
@@ -102,6 +97,7 @@ module.exports = (api, options, rootOptions) => {
   }
 
   api.onCreateComplete(() => {
+    debug('onCreateComplete called')
     const defaultLocaleMessages = JSON.stringify({
       message: 'hello i18n !!'
     }, null, 2)
@@ -117,7 +113,7 @@ module.exports = (api, options, rootOptions) => {
       }
     }
 
-    const localesDirPath = api.resolve('./src/locales')
+    const localesDirPath = api.resolve('src/locales')
     if (!exists(localesDirPath)) {
       if (!mkdir(localesDirPath)) {
         api.exitLog(`cannot make ${localesDirPath}`, 'error')
@@ -125,9 +121,9 @@ module.exports = (api, options, rootOptions) => {
       }
     }
 
-    writeLocaleFile(api.resolve(`./src/locales/${locale}.json`))
+    writeLocaleFile(api.resolve(`src/locales/${locale}.json`))
     if (locale !== fallbackLocale) {
-      writeLocaleFile(api.resolve(`./src/locales/${fallbackLocale}.json`))
+      writeLocaleFile(api.resolve(`src/locales/${fallbackLocale}.json`))
     }
 
     const envPath = api.resolve('.env')
@@ -150,6 +146,7 @@ module.exports = (api, options, rootOptions) => {
   })
 
   api.postProcessFiles(files => {
+    debug('postProcessFiles called')
     if (!api.hasPlugin('typescript')) { return }
     const tsConfigRaw = files['tsconfig.json']
     const tsConfig = JSON.parse(tsConfigRaw)
