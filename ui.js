@@ -217,6 +217,12 @@ module.exports = api => {
       setSharedData('localePaths', getLocalePaths(messages))
       setSharedData('locales', locales)
       setSharedData('current', locale)
+
+      api.notify({
+        title: 'add a locale',
+        message: `add ${locale} !!`,
+        icon: 'done'
+      })
     })
 
     api.addView({
