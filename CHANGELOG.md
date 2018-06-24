@@ -1,3 +1,13 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.3.0...v0.3.1) (2018-06-24)
+
+
+### :zap: Improvements
+
+* **ui:** locale additional notification ([58f7d9e](https://github.com/kazupon/vue-cli-plugin-i18n/commit/58f7d9e))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.2.0...v0.3.0) (2018-06-15)
 
