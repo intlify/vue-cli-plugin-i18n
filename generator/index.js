@@ -52,7 +52,7 @@ module.exports = (api, options, rootOptions) => {
 
     const pkg = {
       dependencies: {
-        'vue-i18n': '^7.8.0'
+        'vue-i18n': '^8.0.0'
       },
       vue: {
         pluginOptions: { enableInSFC }
@@ -131,7 +131,7 @@ module.exports = (api, options, rootOptions) => {
     }
 
     const envPath = api.resolve('.env')
-    let envVars = exists(envPath) ? readEnv(envPath) : {}
+    const envVars = exists(envPath) ? readEnv(envPath) : {}
 
     if (envVars['VUE_APP_I18N_LOCALE']) {
       api.exitLog(`overwrite VUE_APP_I18N_LOCALE at ${envPath}`, 'info')
