@@ -37,7 +37,7 @@ function assignValuesWithPath (path, value, messages) {
 
 function getLocales (targetPath) {
   debug('getLocales', targetPath)
-  return fs.readdirSync(`${targetPath}/src/locales`).map(locale => {
+  return fs.readdirSync(targetPath).map(locale => {
     return path.basename(locale, '.json')
   })
 }
@@ -45,7 +45,7 @@ function getLocales (targetPath) {
 function getLocaleMessages (targetPath, locales) {
   debug('getLocaleMessages', targetPath, locales)
   return locales.reduce((val, locale) => {
-    const fullPath = `${targetPath}/src/locales/${locale}.json`
+    const fullPath = `${targetPath}/${locale}.json`
     val[locale] = require(fullPath)
     delete require.cache[require.resolve(fullPath)]
     return val
@@ -65,7 +65,7 @@ function writeLocaleMessages (targetPath, locale, messages, order) {
   const sortedMessages = sortObject(messages, order)
   debug('writeLocaleMessages after:', sortedMessages)
   return fs.writeFileSync(
-    `${targetPath}/src/locales/${locale}.json`,
+    `${targetPath}/${locale}.json`,
     JSON.stringify(sortedMessages, null, 2), { encoding: 'utf8' }
   )
 }
@@ -73,8 +73,9 @@ function writeLocaleMessages (targetPath, locale, messages, order) {
 module.exports = api => {
   const { getSharedData, setSharedData, watchSharedData } = api.namespace('vue-i18n-')
 
-  function setupAddon (path) {
-    debug(`setupAddon: path -> ${path}`)
+  function setupAddon (path, options) {
+    debug(`setupAddon: path -> ${path}, options -> ${options}`)
+    const localeDir = options.localeDir
     setSharedData('order', 'asc')
     const env = readEnv(`${path}/.env`)
     const current = env['VUE_APP_I18N_LOCALE'] || 'en'
@@ -82,15 +83,16 @@ module.exports = api => {
     setSharedData('current', defaultLocale)
     setSharedData('defaultLocale', defaultLocale)
     debug(`setupAddon: current -> ${current}, defaultLocale -> ${defaultLocale}`)
-    const locales = getLocales(path)
+    const locales = getLocales(`${path}/src/${localeDir}`)
     setSharedData('locales', locales)
-    const messages = getLocaleMessages(path, locales)
+    const messages = getLocaleMessages(`${path}/src/${localeDir}`, locales)
     setSharedData('localeMessages', messages)
     setSharedData('localePaths', getLocalePaths(messages))
   }
 
   try {
     let currentProject = null
+    let currentConfig = null
 
     api.onProjectOpen((project, previousProject) => {
       debug('onProjectOpen', project, previousProject)
@@ -98,19 +100,25 @@ module.exports = api => {
 
     api.onPluginReload(project => {
       debug('onPluginReload', project)
-      setupAddon(project.path)
+      const rawConfig = require(`${project.path}/vue.config`)
+      const config = rawConfig.pluginOptions || { localeDir: 'locales' }
+      if (!config.localeDir) { config.localeDir = 'locales' }
+      debug('onPluginReload : load vue.config', config)
+      setupAddon(project.path, config)
       currentProject = project
+      currentConfig = config
     })
 
     api.onAction('add-path-action', ({ path, locale }) => {
       debug('add-path-action onAction', path, locale)
-      if (!currentProject && !path) {
+      if (!currentProject || !currentConfig || !path) {
         console.error('add-path-action: invalid pre-condition !!')
         return
       }
 
-      const locales = getLocales(currentProject.path)
-      const messages = getLocaleMessages(currentProject.path, locales)
+      const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
+      const locales = getLocales(localePath)
+      const messages = getLocaleMessages(localePath, locales)
       const orderData = getSharedData('order')
 
       const additional = {}
@@ -120,7 +128,7 @@ module.exports = api => {
       debug('additional', additional)
       const message = deepmerge(original, unflatten(additional))
       debug('merged', message)
-      writeLocaleMessages(currentProject.path, locale, message, orderData.value)
+      writeLocaleMessages(localePath, locale, message, orderData.value)
       messages[locale] = message
       setSharedData('localeMessages', messages)
       setSharedData('localePaths', getLocalePaths(messages))
@@ -128,13 +136,14 @@ module.exports = api => {
 
     api.onAction('update-path-action', ({ path, old, locale }) => {
       debug('update-path-action onAction', path, old, locale)
-      if (!currentProject && !path && !old) {
+      if (!currentProject || !currentConfig || !path || !old) {
         console.error('update-path-action: invalid pre-condition !!')
         return
       }
 
-      const locales = getLocales(currentProject.path)
-      const messages = getLocaleMessages(currentProject.path, locales)
+      const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
+      const locales = getLocales(localePath)
+      const messages = getLocaleMessages(localePath, locales)
       const orderData = getSharedData('order')
 
       const original = messages[locale]
@@ -143,7 +152,7 @@ module.exports = api => {
       delete flattendOriginal[old]
       const newMessage = unflatten(flattendOriginal)
       assignValuesWithPath(path, oldValues, newMessage)
-      writeLocaleMessages(currentProject.path, locale, newMessage, orderData.value)
+      writeLocaleMessages(localePath, locale, newMessage, orderData.value)
       messages[locale] = newMessage
       setSharedData('localeMessages', messages)
       setSharedData('localePaths', getLocalePaths(messages))
@@ -151,20 +160,21 @@ module.exports = api => {
 
     api.onAction('delete-path-action', ({ path, locale }) => {
       debug('delete-path-action onAction', path, locale)
-      if (!currentProject && !path) {
+      if (!currentProject || !currentConfig || !path) {
         console.log('delete-path-action: invalid pre-condition')
         return
       }
 
-      const locales = getLocales(currentProject.path)
-      const messages = getLocaleMessages(currentProject.path, locales)
+      const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
+      const locales = getLocales(localePath)
+      const messages = getLocaleMessages(localePath, locales)
       const orderData = getSharedData('order')
 
       const message = messages[locale]
       const flattendMessage = flatten(message)
       delete flattendMessage[path]
       messages[locale] = unflatten(flattendMessage)
-      const ret = writeLocaleMessages(currentProject.path, locale, messages[locale], orderData.value)
+      const ret = writeLocaleMessages(localePath, locale, messages[locale], orderData.value)
       debug('write data', ret)
 
       setSharedData('localeMessages', messages)
@@ -173,20 +183,21 @@ module.exports = api => {
 
     api.onAction('edit-message-action', ({ path, value, locale }) => {
       debug('edit-message-action onAction', path, value, locale)
-      if (!currentProject && !path) {
+      if (!currentProject || !currentConfig || !path) {
         console.error('edit-message-action: invalid pre-condition !!')
         return
       }
 
-      const locales = getLocales(currentProject.path)
-      const localeMessages = getLocaleMessages(currentProject.path, locales)
+      const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
+      const locales = getLocales(localePath)
+      const localeMessages = getLocaleMessages(localePath, locales)
       const orderData = getSharedData('order')
 
       const messages = localeMessages[locale]
       const flattendMessage = flatten(messages)
       flattendMessage[path] = value
       localeMessages[locale] = unflatten(flattendMessage)
-      writeLocaleMessages(currentProject.path, locale, localeMessages[locale], orderData.value)
+      writeLocaleMessages(localePath, locale, localeMessages[locale], orderData.value)
 
       setSharedData('localeMessages', localeMessages)
       setSharedData('localePaths', getLocalePaths(localeMessages))
@@ -194,14 +205,15 @@ module.exports = api => {
 
     api.onAction('add-locale-action', ({ locale }) => {
       debug('add-locale-action onAction', locale)
-      if (!currentProject && !locale) {
+      if (!currentProject || !currentConfig || !locale) {
         console.error('add-locale-action: invalid pre-condition')
         return
       }
 
+      const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
       const defaultLocaleData = getSharedData('defaultLocale')
       const defaultLocale = defaultLocaleData.value
-      const oldMessages = getLocaleMessages(currentProject.path, getLocales(currentProject.path))
+      const oldMessages = getLocaleMessages(localePath, getLocales(localePath))
       const orderData = getSharedData('order')
 
       const oldFlattendMessages = flatten(oldMessages[defaultLocale])
@@ -209,10 +221,10 @@ module.exports = api => {
         val[p] = oldFlattendMessages[p]
         return val
       }, {})
-      writeLocaleMessages(currentProject.path, locale, unflatten(newLocaleMessages), orderData.value)
+      writeLocaleMessages(localePath, locale, unflatten(newLocaleMessages), orderData.value)
 
-      const locales = getLocales(currentProject.path)
-      const messages = getLocaleMessages(currentProject.path, locales)
+      const locales = getLocales(localePath)
+      const messages = getLocaleMessages(localePath, locales)
       setSharedData('localeMessages', messages)
       setSharedData('localePaths', getLocalePaths(messages))
       setSharedData('locales', locales)

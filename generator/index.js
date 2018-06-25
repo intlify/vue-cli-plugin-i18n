@@ -28,7 +28,7 @@ function buildEnvContent (values) {
 }
 
 module.exports = (api, options, rootOptions) => {
-  const { locale, fallbackLocale, enableInSFC } = options
+  const { locale, fallbackLocale, localeDir, enableInSFC } = options
   debug('options', options)
   debug('rootOptions', rootOptions)
 
@@ -36,7 +36,7 @@ module.exports = (api, options, rootOptions) => {
     const lang = api.hasPlugin('typescript') ? 'ts' : 'js'
     const classComponent = checkInstalled('./node_modules/vue-class-component/package.json') &&
       checkInstalled('./node_modules/vue-property-decorator/package.json')
-    const additionalOptions = { ...options, ...{ lang, classComponent } }
+    const additionalOptions = { ...options, ...{ lang, localeDir, classComponent } }
     debug('additionalOptions', additionalOptions)
 
     /*
@@ -48,7 +48,7 @@ module.exports = (api, options, rootOptions) => {
         'vue-i18n': '^8.0.0'
       },
       vue: {
-        pluginOptions: { enableInSFC }
+        pluginOptions: { locale, fallbackLocale, localeDir, enableInSFC }
       }
     }
 
@@ -73,6 +73,14 @@ module.exports = (api, options, rootOptions) => {
     api.extendPackage(pkg)
 
     /*
+     * Modify main.(js|ts)
+     */
+    const file = lang === 'ts' ? 'src/main.ts' : 'src/main.js'
+    debug('target file', file)
+    api.injectImports(file, `import i18n from './i18n'`)
+    api.injectRootOptions(file, `i18n,`)
+
+    /*
      * render templates
      */
 
@@ -83,14 +91,6 @@ module.exports = (api, options, rootOptions) => {
     if (enableInSFC) {
       api.render('./templates/sfc', { ...additionalOptions })
     }
-
-    /*
-     * Modify main.(js|ts)
-     */
-    const file = lang === 'ts' ? 'src/main.ts' : 'src/main.js'
-    debug('target file', file)
-    api.injectImports(file, `import i18n from './i18n'`)
-    api.injectRootOptions(file, `i18n,`)
   } catch (e) {
     api.exitLog(`unexpected error in vue-cli-plugin-i18n: ${e.message}`, 'error')
     return
@@ -113,7 +113,7 @@ module.exports = (api, options, rootOptions) => {
       }
     }
 
-    const localesDirPath = api.resolve('src/locales')
+    const localesDirPath = api.resolve(`src/${localeDir}`)
     if (!exists(localesDirPath)) {
       if (!mkdir(localesDirPath)) {
         api.exitLog(`cannot make ${localesDirPath}`, 'error')
@@ -121,9 +121,9 @@ module.exports = (api, options, rootOptions) => {
       }
     }
 
-    writeLocaleFile(api.resolve(`src/locales/${locale}.json`))
+    writeLocaleFile(api.resolve(`src/${localeDir}/${locale}.json`))
     if (locale !== fallbackLocale) {
-      writeLocaleFile(api.resolve(`src/locales/${fallbackLocale}.json`))
+      writeLocaleFile(api.resolve(`src/${localeDir}/${fallbackLocale}.json`))
     }
 
     const envPath = api.resolve('.env')
