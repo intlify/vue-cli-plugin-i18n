@@ -101,7 +101,9 @@ module.exports = api => {
     api.onPluginReload(project => {
       debug('onPluginReload', project)
       const rawConfig = require(`${project.path}/vue.config`)
-      const config = rawConfig.pluginOptions || { localeDir: 'locales' }
+      const config = (rawConfig.pluginOptions && rawConfig.pluginOptions.i18n)
+        ? rawConfig.pluginOptions.i18n
+        : { localeDir: 'locales' }
       if (!config.localeDir) { config.localeDir = 'locales' }
       debug('onPluginReload : load vue.config', config)
       setupAddon(project.path, config)

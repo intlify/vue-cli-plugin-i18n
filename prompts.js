@@ -7,7 +7,7 @@ module.exports = [{
 }, {
   type: 'input',
   name: 'fallbackLocale',
-  message: 'The locale of project fallback localization.',
+  message: 'The fallback locale of project localization.',
   validate: input => !!input,
   default: 'en'
 }, {

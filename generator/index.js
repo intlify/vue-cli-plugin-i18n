@@ -48,7 +48,11 @@ module.exports = (api, options, rootOptions) => {
         'vue-i18n': '^8.0.0'
       },
       vue: {
-        pluginOptions: { locale, fallbackLocale, localeDir, enableInSFC }
+        pluginOptions: {
+          i18n: {
+            locale, fallbackLocale, localeDir, enableInSFC
+          }
+        }
       }
     }
 
