@@ -5,5 +5,8 @@ module.exports = {
     id: 'vue-i18n',
     port: 8043
   }),
-  outputDir: '../client-addon-dist'
+  outputDir: '../client-addon-dist',
+  pluginOptions: {
+    enableInSFC: true
+  }
 }
