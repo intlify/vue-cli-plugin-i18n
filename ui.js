@@ -119,19 +119,22 @@ module.exports = api => {
       }
 
       const localePath = `${currentProject.path}/src/${currentConfig.localeDir}`
+      const orderData = getSharedData('order')
       const locales = getLocales(localePath)
       const messages = getLocaleMessages(localePath, locales)
-      const orderData = getSharedData('order')
 
-      const additional = {}
-      additional[path] = '' // set default
-      const original = messages[locale]
-      debug('original', original)
-      debug('additional', additional)
-      const message = deepmerge(original, unflatten(additional))
-      debug('merged', message)
-      writeLocaleMessages(localePath, locale, message, orderData.value)
-      messages[locale] = message
+      locales.forEach(locale => {
+        const additional = {}
+        additional[path] = '' // set default
+        const original = messages[locale]
+        debug('original', original)
+        debug('additional', additional)
+        const message = deepmerge(original, unflatten(additional))
+        debug('merged', message)
+        writeLocaleMessages(localePath, locale, message, orderData.value)
+        messages[locale] = message
+      })
+
       setSharedData('localeMessages', messages)
       setSharedData('localePaths', getLocalePaths(messages))
     })
