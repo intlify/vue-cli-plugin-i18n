@@ -1,3 +1,26 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.3.1...v0.4.0) (2018-07-21)
+
+
+### :boom: Breaking changes
+
+* **config:** plugin options namespaced ([63192ec](https://github.com/kazupon/vue-cli-plugin-i18n/commit/63192ec))
+
+
+### :star: New Features
+
+* add locale directory setting ([3dec7a5](https://github.com/kazupon/vue-cli-plugin-i18n/commit/3dec7a5))
+* japanese localization ([e6e0980](https://github.com/kazupon/vue-cli-plugin-i18n/commit/e6e0980))
+* localization ([b8ab630](https://github.com/kazupon/vue-cli-plugin-i18n/commit/b8ab630))
+
+
+### :zap: Improvements
+
+* **generator:** locale file detecting ([4906ecc](https://github.com/kazupon/vue-cli-plugin-i18n/commit/4906ecc))
+* **ui:** default add new path to all locales ([63fe800](https://github.com/kazupon/vue-cli-plugin-i18n/commit/63fe800))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.3.0...v0.3.1) (2018-06-24)
 
