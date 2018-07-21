@@ -1,0 +1,57 @@
+{
+  "org": {
+    "kazupon": {
+      "vue-i18n": {
+        "editor": {
+          "messages": "メッセージ",
+          "paths": "パス"
+        },
+        "locale": {
+          "button": "ロケールを追加",
+          "default": "{locale} (デフォルト)",
+          "modal": {
+            "body": {
+              "hint": "BCP47 によるロケール名で推奨",
+              "info": "BCP47 について ...",
+              "label": "ロケールを入力",
+              "placeholder": "例: ja",
+              "error": "既にロケールが存在します。"
+            },
+            "button": "追加",
+            "title": "ロケールを追加"
+          }
+        },
+        "message-field": {
+          "placeholder": "メッセージを編集"
+        },
+        "notification": {
+          "message": "{locale} を追加しました。",
+          "title": "Vue I18n"
+        },
+        "path-add-field": {
+          "button": "パスを追加",
+          "modal": {
+            "body": "パスを追加してもよろしいですか？",
+            "button": "追加",
+            "title": "確認",
+            "messages": {
+              "already": "既にパスが存在します。",
+              "breaking": "このパスを追加した場合、対応するパスの階層構造が失われるかもしれません。"
+            }
+          },
+          "placeholder": "パスの入力"
+        },
+        "path-field": {
+          "modal": {
+            "body": "パスを更新してもよろしいですか？",
+            "button": "更新",
+            "title": "確認"
+          },
+          "placeholder": "パスを更新"
+        },
+        "title": "プロジェクトローカライゼーション",
+        "tooltip": "ローカライゼーション"
+      }
+    }
+  }
+}
