@@ -17,7 +17,7 @@
       ref="path"
       :status="status"
       :icon-right="icon"
-      placeholder="Edit a path"
+      :placeholder="$t('org.kazupon.vue-i18n.path-field.placeholder')"
     />
     <div class="actions">
       <VueButton
@@ -49,19 +49,19 @@
 
     <VueModal
       v-if="modal"
-      title="Confirm"
+      :title="$t('org.kazupon.vue-i18n.path-field.modal.title')"
       class="medium"
       @close="onCloseModal"
     >
       <div class="default-body">
-        <p>Are you sure update the path?</p>
+        <p>{{ $t('org.kazupon.vue-i18n.path-field.modal.body') }}</p>
       </div>
       <div slot="footer" class="actions">
         <VueButton
           class="primary big"
           @click="onUpdateModal"
         >
-          Update
+          {{ $t('org.kazupon.vue-i18n.path-field.modal.button') }}
         </VueButton>
       </div>
     </VueModal>

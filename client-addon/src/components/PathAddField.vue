@@ -14,7 +14,7 @@
         ref="path"
         :status="status"
         :icon-right="icon"
-        placeholder="Input a path"
+        :placeholder="$t('org.kazupon.vue-i18n.path-add-field.placeholder')"
       />
       <span slot="subtitle" v-if="message">{{ message }}</span>
     </VueFormField>
@@ -36,26 +36,26 @@
         v-if="!shown"
         @click="onClickAdding"
         class="primary"
-        label="Add a path"
+        :label="$t('org.kazupon.vue-i18n.path-add-field.button')"
         icon-left="add"
       />
     </div>
 
     <VueModal
       v-if="modal"
-      title="Confirm"
+      :title="$t('org.kazupon.vue-i18n.path-add-field.modal.title')"
       class="medium"
       @close="onCloseModal"
     >
       <div class="default-body">
-        <p>Are you sure add the path?</p>
+        <p>{{ $t('org.kazupon.vue-i18n.path-add-field.modal.body') }}</p>
       </div>
       <div slot="footer" class="actions">
         <VueButton
           class="primary big"
           @click="onAddModal"
         >
-          Add
+          {{ $t('org.kazupon.vue-i18n.path-add-field.modal.button') }}
         </VueButton>
       </div>
     </VueModal>
@@ -140,11 +140,11 @@ export default {
 
     onInputPath () {
       if (~this.currentPaths.indexOf(this.path)) {
-        this.message = 'already exist path'
+        this.message = this.$t('org.kazupon.vue-i18n.path-add-field.modal.messages.already')
         this.icon = 'error'
         this.status = 'danger'
       } else if (hasChildPaths(this.path, this.currentPaths)) {
-        this.message = 'If this path is added, the hierarchical structure of the corresponding path may be lost'
+        this.message = this.$t('org.kazupon.vue-i18n.path-add-field.modal.messages.breaking')
         this.icon = 'warning'
         this.status = 'warning'
       } else {

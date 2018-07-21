@@ -13,7 +13,9 @@
     "debug": "^3.1.0",
     "deepmerge": "^2.1.1",
     "dotenv": "^6.0.0",
-    "flat": "^4.0.0"
+    "flat": "^4.0.0",
+    "vue": "^2.5.16",
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^1.2.0",

@@ -16,7 +16,7 @@
       ref="message"
       :status="error ? 'danger' : ''"
       :icon-right="error ? 'error': ''"
-      placeholder="Edit a message"
+      :placeholder="$t('org.kazupon.vue-i18n.message-field.placeholder')"
     />
     <div class="actions">
       <VueButton

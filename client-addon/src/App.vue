@@ -1,18 +1,18 @@
 <template>
   <div class="project-localizations">
-    <ContentView :title="$t('views.project-localizations.title')">
+    <ContentView :title="$t('org.kazupon.vue-i18n.title')">
       <template slot="actions">
         <VueSelect v-model="current" button-class="primary">
           <VueSelectButton
             v-for="locale in locales"
             :key="locale"
             :value="locale"
-            :label="locale === defaultLocale ? `${locale} (default)` : locale"
+            :label="locale === defaultLocale ? $t('org.kazupon.vue-i18n.locale.default', { locale }) : locale"
           />
         </VueSelect>
         <VueButton
           class="primary round"
-          label="Add locale"
+          :label="$t('org.kazupon.vue-i18n.locale.button')"
           icon-left="add"
           @click="onClickAddLocale"
         />
@@ -24,7 +24,7 @@
             <div class="localization-header">
               <div class="path">
                 <div class="title">
-                  <h3>Paths</h3>
+                  <h3>{{ $t('org.kazupon.vue-i18n.editor.paths') }}</h3>
                 </div>
                 <div class="actions">
                   <VueButton
@@ -36,7 +36,7 @@
               </div>
               <div class="locale">
                 <div class="title">
-                  <h3>Messages</h3>
+                  <h3>{{ $t('org.kazupon.vue-i18n.editor.messages') }}</h3>
                 </div>
               </div>
             </div>
@@ -57,20 +57,20 @@
 
     <VueModal
       v-if="modal"
-      title="Add a locale"
+      :title="$t('org.kazupon.vue-i18n.locale.modal.title')"
       class="medium"
       @close="modal = false"
     >
       <div class="default-body">
         <VueFormField
           class="locale-field"
-          title="Input a locale"
+          :title="$t('org.kazupon.vue-i18n.locale.modal.body.label')"
           :subtitle="error"
         >
           <VueInput
             v-model="locale"
             @input="onInputLocale"
-            placeholder="e.g: ja"
+            :placeholder="$t('org.kazupon.vue-i18n.locale.modal.body.placeholder')"
             :status="status"
             :icon-right="icon"
             ref="locale"
@@ -78,12 +78,12 @@
         </VueFormField>
          <div class="vue-ui-text info banner">
           <VueIcon icon="info" class="big"/>
-          <span>Recommended locale name according to BCP47</span>
+          <span>{{ $t('org.kazupon.vue-i18n.locale.modal.body.hint') }}</span>
         </div>
         <div class="more-info">
           <a target="_blank" href="https://tools.ietf.org/html/bcp47">
             <VueIcon icon="open_in_new" class="big"/>
-            See the BCP47 ...
+            {{ $t('org.kazupon.vue-i18n.locale.modal.body.info') }}
           </a>
         </div>
       </div>
@@ -93,7 +93,7 @@
           :disabled="disable"
           @click="onAddLocale"
         >
-          Add
+          {{ $t('org.kazupon.vue-i18n.locale.modal.button') }}
         </VueButton>
       </div>
     </VueModal>
@@ -131,6 +131,10 @@ export default {
       localeMessages: 'localeMessages',
       localePaths: 'localePaths'
     })
+  },
+
+  async created () {
+    await this.$setSharedData('vue-i18n-clientLocale', this.$i18n.locale)
   },
 
   computed: {
@@ -184,7 +188,7 @@ export default {
 
     onInputLocale () {
       if (~this.locales.indexOf(this.locale)) {
-        this.error = 'already exist a locale'
+        this.error = this.$t('org.kazupon.vue-i18n.locale.modal.body.error')
         this.icon = 'error'
         this.status = 'danger'
       } else {

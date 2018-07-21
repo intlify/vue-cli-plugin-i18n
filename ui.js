@@ -5,6 +5,7 @@ const deepmerge = require('deepmerge')
 const flatten = require('flat')
 const unflatten = require('flat').unflatten
 const { isObject, readEnv, sortObject } = require('./utils')
+const i18n = require('./i18n')
 
 function getValuesFromPath (path, messages) {
   const paths = path.split('.')
@@ -235,9 +236,11 @@ module.exports = api => {
       setSharedData('locales', locales)
       setSharedData('current', locale)
 
+      const clientLocale = getSharedData('clientLocale').value
+      debug('add-locale-action: clientLocale', clientLocale)
       api.notify({
-        title: 'add a locale',
-        message: `add ${locale} !!`,
+        title: i18n.t('org.kazupon.vue-i18n.notification.title', clientLocale),
+        message: i18n.t('org.kazupon.vue-i18n.notification.message', clientLocale, { locale }),
         icon: 'done'
       })
     })
@@ -247,7 +250,7 @@ module.exports = api => {
       name: 'vue-i18n-entry',
       // icon: 'pets',
       icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
-      tooltip: 'Localizations'
+      tooltip: 'org.kazupon.vue-i18n.tooltip'
     })
 
     const clientAddonOptions = { id: 'vue-i18n' }
@@ -265,5 +268,9 @@ module.exports = api => {
 
   watchSharedData('current', (val, old) => {
     debug('watch `current`:', val, old)
+  })
+  
+  watchSharedData('clientLocale', (val, old) => {
+    debug('watch `clientLocale`:', val, old)
   })
 }
