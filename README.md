@@ -4,6 +4,9 @@
 
 Vue CLI 3 plugin to add vue-i18n to your Vue Project
 
+<a href="https://www.patreon.com/kazupon" target="_blank">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patreon">
+</a>
 
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
