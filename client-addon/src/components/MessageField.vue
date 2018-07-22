@@ -67,7 +67,7 @@ export default {
   },
 
   sharedData () {
-    return mapSharedData('vue-i18n-', {
+    return mapSharedData('org.kazupon.vue-i18n.', {
       current: 'current'
     })
   },

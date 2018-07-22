@@ -2,7 +2,7 @@ const { clientAddonConfig } = require('@vue/cli-ui')
 
 module.exports = {
   ...clientAddonConfig({
-    id: 'vue-i18n',
+    id: 'org.kazupon.vue-i18n.client-addon',
     port: 8043
   }),
   outputDir: '../client-addon-dist',

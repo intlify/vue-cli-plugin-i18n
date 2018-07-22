@@ -72,7 +72,7 @@ function writeLocaleMessages (targetPath, locale, messages, order) {
 }
 
 module.exports = api => {
-  const { getSharedData, setSharedData, watchSharedData } = api.namespace('vue-i18n-')
+  const { getSharedData, setSharedData, watchSharedData } = api.namespace('org.kazupon.vue-i18n.')
 
   function setupAddon (path, options) {
     debug(`setupAddon: path -> ${path}, options -> ${options}`)
@@ -246,14 +246,14 @@ module.exports = api => {
     })
 
     api.addView({
-      id: 'vue-i18n-entry-view',
-      name: 'vue-i18n-entry',
+      id: 'org.kazupon.vue-i18n.views.entry',
+      name: 'org.kazupon.vue-i18n.routes.entry',
       // icon: 'pets',
       icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
       tooltip: 'org.kazupon.vue-i18n.tooltip'
     })
 
-    const clientAddonOptions = { id: 'vue-i18n' }
+    const clientAddonOptions = { id: 'org.kazupon.vue-i18n.client-addon' }
     if (!process.env.VUE_I18N_UI_DEV) {
       clientAddonOptions['path'] = path.resolve(__dirname, './client-addon-dist')
     } else {
@@ -269,7 +269,7 @@ module.exports = api => {
   watchSharedData('current', (val, old) => {
     debug('watch `current`:', val, old)
   })
-  
+
   watchSharedData('clientLocale', (val, old) => {
     debug('watch `clientLocale`:', val, old)
   })

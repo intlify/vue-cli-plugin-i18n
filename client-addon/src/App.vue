@@ -123,7 +123,7 @@ export default {
   }),
 
   sharedData () {
-    return mapSharedData('vue-i18n-', {
+    return mapSharedData('org.kazupon.vue-i18n.', {
       order: 'order',
       current: 'current',
       defaultLocale: 'defaultLocale',
@@ -134,7 +134,7 @@ export default {
   },
 
   async created () {
-    await this.$setSharedData('vue-i18n-clientLocale', this.$i18n.locale)
+    await this.$setSharedData('org.kazupon.vue-i18n.clientLocale', this.$i18n.locale)
   },
 
   computed: {

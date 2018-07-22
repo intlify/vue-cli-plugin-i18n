@@ -1,7 +1,7 @@
 import App from './App.vue'
 
-ClientAddonApi.addRoutes('vue-i18n', [
-  { path: '', name: 'vue-i18n-entry', component: App }
+ClientAddonApi.addRoutes('org.kazupon.vue-i18n', [
+  { path: '', name: 'org.kazupon.vue-i18n.routes.entry', component: App }
 ])
 
 const locales = require.context('./locales', true, /[a-z0-9]+\.json$/i)
