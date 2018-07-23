@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.4.1...v0.5.0) (2018-07-23)
+
+
+### :star: New Features
+
+* locale configration ([44544f7](https://github.com/kazupon/vue-cli-plugin-i18n/commit/44544f7)), closes [#11](https://github.com/kazupon/vue-cli-plugin-i18n/issues/11)
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.4.0...v0.4.1) (2018-07-23)
 
