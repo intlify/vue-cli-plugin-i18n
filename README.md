@@ -47,10 +47,17 @@ These env variables are read in `src/i18n.(js|ts)`.
 ```js
 module.exports = {
   pluginOptions: {
-    enalbeInSFC: false // Locale messages in Single file components
+    i18n: {
+      locale: 'ja',             // The locale of project localization
+      fallbackLocale: 'en',     // The fallback locale of project localization
+      localeDir: 'locales',     // The directory where store localization messages of project
+      enableInSFC: false        // Enable locale messages in Single file components
+    }
   }
 }
 ```
+
+See the `prompts.js`.
 
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/CHANGELOG.md).
