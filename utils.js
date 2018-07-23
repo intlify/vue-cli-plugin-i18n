@@ -70,6 +70,14 @@ function readEnv (path) {
   return ret
 }
 
+function buildEnvContent (values) {
+  let content = ''
+  Object.keys(values).forEach(key => {
+    content += `${key}=${values[key]}\n`
+  })
+  return content
+}
+
 function sortObject (obj, order = 'asc') {
   const keys = Object.keys(obj)
   const sortedKeys = order === 'asc' ? keys.sort() : keys.reverse()
@@ -94,5 +102,6 @@ module.exports = {
   writeFile,
   readFile,
   readEnv,
+  buildEnvContent,
   sortObject
 }

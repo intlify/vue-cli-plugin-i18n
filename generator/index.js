@@ -4,28 +4,9 @@ const {
   exists,
   mkdir,
   writeFile,
-  readFile
+  readEnv,
+  buildEnvContent
 } = require('../utils')
-const dotenv = require('dotenv')
-
-function readEnv (path) {
-  let ret = {}
-  try {
-    ret = dotenv.parse(Buffer.from(readFile(path)))
-  } catch (e) {
-    console.warn('readEnv error:', e.message)
-    ret = {}
-  }
-  return ret
-}
-
-function buildEnvContent (values) {
-  let content = ''
-  Object.keys(values).forEach(key => {
-    content += `${key}=${values[key]}\n`
-  })
-  return content
-}
 
 module.exports = (api, options, rootOptions) => {
   const { locale, fallbackLocale, localeDir, enableInSFC } = options

@@ -4,6 +4,19 @@
       "vue-i18n": {
         "title": "Project Localizations",
         "tooltip": "Localizations",
+        "config": {
+          "description": "Settings of I18n",
+          "prompts": {
+            "locale": {
+              "message": "Locale",
+              "description": "Locale of project localization"
+            },
+            "fallbackLocale": {
+              "message": "Fallback Locale",
+              "description": "Fallback locale of project localization"
+            }
+          }
+        },
         "notification": {
           "title": "Vue I18n",
           "message": "Added a {locale}"

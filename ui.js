@@ -4,7 +4,13 @@ const path = require('path')
 const deepmerge = require('deepmerge')
 const flatten = require('flat')
 const unflatten = require('flat').unflatten
-const { isObject, readEnv, sortObject } = require('./utils')
+const {
+  isObject,
+  readEnv,
+  buildEnvContent,
+  writeFile,
+  sortObject
+} = require('./utils')
 const i18n = require('./i18n')
 
 function getValuesFromPath (path, messages) {
@@ -73,6 +79,7 @@ function writeLocaleMessages (targetPath, locale, messages, order) {
 
 module.exports = api => {
   const { getSharedData, setSharedData, watchSharedData } = api.namespace('org.kazupon.vue-i18n.')
+  let clientLocale = 'en'
 
   function setupAddon (path, options) {
     debug(`setupAddon: path -> ${path}, options -> ${options}`)
@@ -236,13 +243,51 @@ module.exports = api => {
       setSharedData('locales', locales)
       setSharedData('current', locale)
 
-      const clientLocale = getSharedData('clientLocale').value
       debug('add-locale-action: clientLocale', clientLocale)
       api.notify({
         title: i18n.t('org.kazupon.vue-i18n.notification.title', clientLocale),
         message: i18n.t('org.kazupon.vue-i18n.notification.message', clientLocale, { locale }),
         icon: 'done'
       })
+    })
+
+    api.describeConfig({
+      id: 'org.kazupon.vue-i18n.config',
+      name: 'Vue I18n',
+      description: 'org.kazupon.vue-i18n.config.description',
+      icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
+      onRead: ({ data, cwd }) => {
+        const env = readEnv(`${cwd}/.env`)
+        const currentLocale = env['VUE_APP_I18N_LOCALE']
+        const defaultLocale = env['VUE_APP_I18N_FALLBACK_LOCALE']
+        debug('onRead', data, clientLocale, currentLocale, defaultLocale)
+        return {
+          prompts: [{
+            type: 'input',
+            name: 'locale',
+            message: 'org.kazupon.vue-i18n.config.prompts.locale.message',
+            description: 'org.kazupon.vue-i18n.config.prompts.locale.description',
+            value: currentLocale || 'en'
+          }, {
+            type: 'input',
+            name: 'fallbackLocale',
+            message: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.message',
+            description: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.description',
+            value: defaultLocale || 'en'
+          }]
+        }
+      },
+      onWrite: ({ answers, data, cwd }) => {
+        debug('onWrite', cwd, answers, data)
+        const envPath = `${cwd}/.env`
+        const env = readEnv(envPath)
+        const { locale, fallbackLocale } = answers
+        env['VUE_APP_I18N_LOCALE'] = locale
+        env['VUE_APP_I18N_FALLBACK_LOCALE'] = fallbackLocale
+        if (!writeFile(envPath, buildEnvContent(env))) {
+          console.error('onWrite: failed env variables')
+        }
+      }
     })
 
     api.addView({
@@ -272,5 +317,6 @@ module.exports = api => {
 
   watchSharedData('clientLocale', (val, old) => {
     debug('watch `clientLocale`:', val, old)
+    clientLocale = val
   })
 }

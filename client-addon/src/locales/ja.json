@@ -2,6 +2,21 @@
   "org": {
     "kazupon": {
       "vue-i18n": {
+        "title": "プロジェクトローカライゼーション",
+        "tooltip": "ローカライゼーション",
+        "config": {
+          "description": "I18n の設定",
+          "prompts": {
+            "locale": {
+              "message": "ロケール",
+              "description": "プロジェクトローカライズゼーションのロケール"
+            },
+            "fallbackLocale": {
+              "message": "フォールバックロケール",
+              "description": "プロジェクトローカライズゼーションのフォールバックロケール"
+            }
+          }
+        },
         "editor": {
           "messages": "メッセージ",
           "paths": "パス"
@@ -48,9 +63,7 @@
             "title": "確認"
           },
           "placeholder": "パスを更新"
-        },
-        "title": "プロジェクトローカライゼーション",
-        "tooltip": "ローカライゼーション"
+        }
       }
     }
   }
