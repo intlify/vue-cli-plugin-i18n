@@ -1,3 +1,13 @@
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.4.0...v0.4.1) (2018-07-23)
+
+
+### :bug: Bug Fixes
+
+* **service:** fix cannot use SFC ([ed8dcd3](https://github.com/kazupon/vue-cli-plugin-i18n/commit/ed8dcd3)), closes [#15](https://github.com/kazupon/vue-cli-plugin-i18n/issues/15)
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.3.1...v0.4.0) (2018-07-21)
 
