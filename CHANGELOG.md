@@ -1,3 +1,14 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.5.0...v0.5.1) (2018-10-02)
+
+
+### :bug: Bug Fixes
+
+* **generator:** fix cannot parse lang included '_' or '-' ([3219ed6](https://github.com/kazupon/vue-cli-plugin-i18n/commit/3219ed6)), closes [#23](https://github.com/kazupon/vue-cli-plugin-i18n/issues/23)
+* **service:** fix cannot import locale messages with 'src' attr at custom blocks ([c4f8752](https://github.com/kazupon/vue-cli-plugin-i18n/commit/c4f8752)), closes [kazupon/vue-i18n-loader#24](https://github.com/kazupon/vue-i18n-loader/issues/24) [kazupon/vue-i18n#401](https://github.com/kazupon/vue-i18n/issues/401) [kazupon/vue-i18n#397](https://github.com/kazupon/vue-i18n/issues/397)
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.4.1...v0.5.0) (2018-07-23)
 
