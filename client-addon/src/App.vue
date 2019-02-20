@@ -226,6 +226,7 @@ export default {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "content";
+  overflow: auto;
 }
 
 .container {
