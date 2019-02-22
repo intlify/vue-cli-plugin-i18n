@@ -5,5 +5,6 @@ module.exports = {
   env: {
   },
   rules: {
+    semi: ['error', 'never']
   }
 }
