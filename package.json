@@ -50,6 +50,7 @@
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
     "clean": "rimraf coverage tests/e2e/projects/*",
     "lint": "eslint --fix --ext .js .",
+    "lint:ci": "eslint --ext .js .",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run test:unit",
     "test:unit": "jest ./tests/unit/*.spec.js",
