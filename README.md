@@ -1,6 +1,7 @@
 # :globe_with_meridians: vue-cli-plugin-i18n
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
+[![CircleCI](https://circleci.com/gh/kazupon/vue-cli-plugin-i18n.svg?style=svg)](https://circleci.com/gh/kazupon/vue-cli-plugin-i18n)
 [![vue-cli-plugin-i18n Dev Token](https://badge.devtoken.rocks/vue-cli-plugin-i18n)](https://devtoken.rocks/package/vue-cli-plugin-i18n)
 
 Vue CLI 3 plugin to add vue-i18n to your Vue Project
