@@ -48,9 +48,6 @@ module.exports = (api, options, rootOptions) => {
       if (!checkInstalled('./node_modules/@types/webpack/package.json')) {
         devTsDependencies['@types/webpack'] = '^4.4.0'
       }
-      if (!checkInstalled('./node_modules/@types/webpack-env/package.json')) {
-        devTsDependencies['@types/webpack-env'] = '^1.13.6'
-      }
       pkg.devDependencies = { ...pkg.devDependencies, ...devTsDependencies }
     }
     debug('pkg', pkg)
