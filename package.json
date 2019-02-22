@@ -14,17 +14,26 @@
     "deepmerge": "^2.1.1",
     "dotenv": "^6.0.0",
     "flat": "^4.0.0",
+    "rimraf": "^2.6.3",
     "vue": "^2.5.16",
     "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
+    "@vue/cli": "^3.4.1",
+    "@vue/cli-service": "^3.4.1",
+    "@vue/cli-test-utils": "^3.4.1",
     "conventional-changelog-cli": "^1.2.0",
     "conventional-github-releaser": "^1.1.3",
     "eslint": "^5.12.0",
     "eslint-plugin-vue": "^5.1.0",
-    "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git"
+    "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git",
+    "inquirer": "^6.0.0",
+    "jest": "^24.1.0"
   },
   "homepage": "https://github.com/kazupon/vue-cli-plugin-i18n#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "keywords": [
     "plugin",
     "vue",
@@ -39,8 +48,11 @@
   },
   "scripts": {
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
+    "clean": "rimraf coverage tests/e2e/projects/*",
     "lint": "eslint --fix --ext .js .",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
-    "test": "npm run lint"
+    "test": "npm run test:unit",
+    "test:unit": "jest ./tests/unit/*.spec.js",
+    "test:e2e": "jest ./tests/e2e/*.spec.js"
   }
 }

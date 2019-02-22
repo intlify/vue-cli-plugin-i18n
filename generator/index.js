@@ -134,6 +134,7 @@ module.exports = (api, options, rootOptions) => {
     debug('postProcessFiles called')
     if (!api.hasPlugin('typescript')) { return }
     const tsConfigRaw = files['tsconfig.json']
+    if (!tsConfigRaw) { return }
     const tsConfig = JSON.parse(tsConfigRaw)
     tsConfig.compilerOptions.types.push('webpack')
     tsConfig.compilerOptions.types.push('webpack-env')
