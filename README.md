@@ -40,6 +40,11 @@ When vue-i18n code files had been scaffolded into your project, the following en
 
   The locale of project fallback localization, default `en`.
 
+- **`VUE_APP_I18N_FALLBACK_UNSET`**
+
+  Enable falback keys to default locale when key is empty, should be set to true for `production`, default `false`.
+
+
 These env variables are read in `src/i18n.(js|ts)`.
 
 ## :wrench: Configrations

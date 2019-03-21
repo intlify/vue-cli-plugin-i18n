@@ -9,7 +9,7 @@ const {
 } = require('../utils')
 
 module.exports = (api, options, rootOptions) => {
-  const { locale, fallbackLocale, localeDir, enableInSFC } = options
+  const { locale, fallbackLocale, localeDir, enableInSFC, fallbackUnset } = options
   debug('options', options)
   debug('rootOptions', rootOptions)
 
@@ -31,7 +31,7 @@ module.exports = (api, options, rootOptions) => {
       vue: {
         pluginOptions: {
           i18n: {
-            locale, fallbackLocale, localeDir, enableInSFC
+            locale, fallbackLocale, localeDir, enableInSFC, fallbackUnset
           }
         }
       }
@@ -120,6 +120,7 @@ module.exports = (api, options, rootOptions) => {
       api.exitLog(`overwrite VUE_APP_I18N_FALLBACK_LOCALE at ${envPath}`, 'info')
     }
     envVars['VUE_APP_I18N_FALLBACK_LOCALE'] = fallbackLocale
+    envVars['VUE_APP_I18N_FALLBACK_UNSET'] = fallbackUnset
 
     if (!writeFile(envPath, buildEnvContent(envVars))) {
       api.exitLog(`cannot write to ${envPath}`, 'error')

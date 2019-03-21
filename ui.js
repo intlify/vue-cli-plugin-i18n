@@ -133,7 +133,7 @@ module.exports = api => {
 
       locales.forEach(locale => {
         const additional = {}
-        additional[path] = '' // set default
+        additional[path] = null // set default
         const original = messages[locale]
         debug('original', original)
         debug('additional', additional)
@@ -260,7 +260,8 @@ module.exports = api => {
         const env = readEnv(`${cwd}/.env`)
         const currentLocale = env['VUE_APP_I18N_LOCALE']
         const defaultLocale = env['VUE_APP_I18N_FALLBACK_LOCALE']
-        debug('onRead', data, clientLocale, currentLocale, defaultLocale)
+        const fallbackUnset = env['VUE_APP_I18N_FALLBACK_UNSET']
+        debug('onRead', data, clientLocale, currentLocale, defaultLocale, fallbackUnset)
         return {
           prompts: [{
             type: 'input',
@@ -274,6 +275,12 @@ module.exports = api => {
             message: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.message',
             description: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.description',
             value: defaultLocale || 'en'
+          }, {
+            type: 'confirm',
+            name: 'fallbackUnset',
+            message: 'org.kazupon.vue-i18n.config.prompts.fallbackUnset.message',
+            description: 'org.kazupon.vue-i18n.config.prompts.fallbackUnset.description',
+            value: fallbackUnset == "true"
           }]
         }
       },
@@ -281,9 +288,10 @@ module.exports = api => {
         debug('onWrite', cwd, answers, data)
         const envPath = `${cwd}/.env`
         const env = readEnv(envPath)
-        const { locale, fallbackLocale } = answers
+        const { locale, fallbackLocale, fallbackUnset } = answers
         env['VUE_APP_I18N_LOCALE'] = locale
         env['VUE_APP_I18N_FALLBACK_LOCALE'] = fallbackLocale
+        env['VUE_APP_I18N_FALLBACK_UNSET'] = fallbackUnset
         if (!writeFile(envPath, buildEnvContent(env))) {
           console.error('onWrite: failed env variables')
         }

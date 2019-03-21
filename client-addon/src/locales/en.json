@@ -14,6 +14,10 @@
             "fallbackLocale": {
               "message": "Fallback Locale",
               "description": "Fallback locale of project localization"
+            },
+            "fallbackUnset": {
+              "message": "Fallback unset",
+              "description": "Fallback key to default when key is empty"
             }
           }
         },
