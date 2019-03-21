@@ -14,7 +14,7 @@ const removeEmpty = (obj) =>
           ? Object.assign(newObj, { [k]: removeEmpty(obj[k]) }) // Recursive
           : Object.assign(newObj, { [k]: obj[k] }), // Copy value
       {},
-    );
+    )
 
 function loadLocaleMessages () {
   const locales = require.context('./<%- localeDir %>', true, /[A-Za-z0-9-_,\s]+\.json$/i)
