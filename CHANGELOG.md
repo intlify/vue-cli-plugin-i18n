@@ -1,3 +1,13 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.5.2...v0.6.0) (2019-04-09)
+
+
+### :star: New Features
+
+* **command:** i18n reporting command (experimental) ([2f87c1e](https://github.com/kazupon/vue-cli-plugin-i18n/commit/2f87c1e))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.5.1...v0.5.2) (2019-02-22)
 
