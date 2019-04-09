@@ -13,6 +13,7 @@ Vue CLI 3 plugin to add vue-i18n to your Vue Project
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
+- Locale messages missing & unused reporting (experimental)
 - Env Variables
 
 ## :rocket: Getting Started
@@ -28,6 +29,14 @@ Install the plugin into your project:
 cd my-vue-app
 vue add i18n
 ```
+
+## :hammer: Injected Commands
+- **`vue-cli-service i18n:report`** (experimental)
+
+  Report the missing locale message keys and unused keys.
+
+> NOTE: limitation
+> `vue-cli-service i18n:report` cannot detect missing and unused keys from local messages of i18n custom blocks.
 
 ## :clipboard: Env variables
 When vue-i18n code files had been scaffolded into your project, the following env variables generate into `.env`:

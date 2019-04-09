@@ -18,4 +18,7 @@ module.exports = (api, options) => {
           .end()
     }
   })
+
+  const report = require('./report')
+  api.registerCommand('i18n:report', report.options, args => report.service(args, api))
 }
