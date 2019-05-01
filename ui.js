@@ -100,34 +100,31 @@ module.exports = api => {
     setSharedData('localePaths', getLocalePaths(messages))
   }
 
+  function setupProject (project, eventName) {
+    const rawConfig = require(`${project.path}/vue.config`)
+    const config = (rawConfig.pluginOptions && rawConfig.pluginOptions.i18n)
+      ? rawConfig.pluginOptions.i18n
+      : { localeDir: 'locales' }
+    if (!config.localeDir) { config.localeDir = 'locales' }
+    debug(`${eventName}: load vue.config`, config)
+    setupAddon(project.path, config)
+    return config
+  }
+
   try {
     let currentProject = null
     let currentConfig = null
 
     api.onProjectOpen((project, previousProject) => {
       debug('onProjectOpen', project, previousProject)
-      const rawConfig = require(`${project.path}/vue.config`)
-      const config = (rawConfig.pluginOptions && rawConfig.pluginOptions.i18n)
-        ? rawConfig.pluginOptions.i18n
-        : { localeDir: 'locales' }
-      if (!config.localeDir) { config.localeDir = 'locales' }
-      debug('onProjectOpen : load vue.config', config)
-      setupAddon(project.path, config)
+      currentConfig = setupProject(project, 'onProjectOpen')
       currentProject = project
-      currentConfig = config
     })
 
     api.onPluginReload(project => {
       debug('onPluginReload', project)
-      const rawConfig = require(`${project.path}/vue.config`)
-      const config = (rawConfig.pluginOptions && rawConfig.pluginOptions.i18n)
-        ? rawConfig.pluginOptions.i18n
-        : { localeDir: 'locales' }
-      if (!config.localeDir) { config.localeDir = 'locales' }
-      debug('onPluginReload : load vue.config', config)
-      setupAddon(project.path, config)
+      currentConfig = setupProject(project, 'onPluginReload')
       currentProject = project
-      currentConfig = config
     })
 
     api.onAction('add-path-action', ({ path, locale }) => {
