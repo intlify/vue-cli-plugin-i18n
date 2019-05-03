@@ -45,7 +45,10 @@ function assignValuesWithPath (path, value, messages) {
 function getLocales (targetPath) {
   debug('getLocales', targetPath)
   return fs.readdirSync(targetPath)
-    .filter(locale => fs.statSync(path.join(targetPath, locale)).isFile())
+    .filter(locale => {
+      const stat = fs.statSync(path.join(targetPath, locale))
+      return stat.isFile() && path.extname(locale) === '.json'
+    })
     .map(locale => {
       return path.basename(locale, '.json')
     })
