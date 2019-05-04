@@ -17,6 +17,15 @@
             }
           }
         },
+        "task": {
+          "report": {
+            "description": "Report the missing locale message keys and unused keys",
+            "prompts": {
+              "type": "reporting type",
+              "output": "create a json file out of report"
+            }
+          }
+        },
         "notification": {
           "title": "Vue I18n",
           "message": "Added a {locale}"

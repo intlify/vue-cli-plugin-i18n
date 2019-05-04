@@ -303,11 +303,11 @@ module.exports = api => {
 
     api.describeTask({
       match: /vue-cli-service i18n:report/,
-      description: 'Report the missing locale message keys and unused keys',
+      description: 'org.kazupon.vue-i18n.task.report.description',
       icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
       prompts: [{
         name: 'type',
-        description: 'reporting type',
+        description: 'org.kazupon.vue-i18n.task.report.prompts.type',
         type: 'list',
         default: 'missing & unused',
         choices: [{
@@ -322,7 +322,7 @@ module.exports = api => {
         }]
       }, {
         name: 'output',
-        description: 'create a json file out of report',
+        description: 'org.kazupon.vue-i18n.task.report.prompts.output',
         type: 'input'
       }],
       onBeforeRun: async ({ answers, args }) => {
