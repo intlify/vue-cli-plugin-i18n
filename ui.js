@@ -301,6 +301,40 @@ module.exports = api => {
       }
     })
 
+    api.describeTask({
+      match: /vue-cli-service i18n:report/,
+      description: 'Report the missing locale message keys and unused keys',
+      icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
+      prompts: [{
+        name: 'type',
+        description: 'reporting type',
+        type: 'list',
+        default: 'missing & unused',
+        choices: [{
+          name: 'missing & unused',
+          value: 'missing & unused'
+        }, {
+          name: 'missing',
+          value: 'missing'
+        }, {
+          name: 'unused',
+          value: 'unused'
+        }]
+      }, {
+        name: 'output',
+        description: 'create a json file out of report',
+        type: 'input'
+      }],
+      onBeforeRun: async ({ answers, args }) => {
+       if (answers.type && answers.type !== 'missing & unused') {
+         args.push('--type', answers.type)
+       }
+       if (answers.output) {
+         args.push('--output', answers.output)
+       }
+      },
+    })
+
     api.addView({
       id: 'org.kazupon.vue-i18n.views.entry',
       name: 'org.kazupon.vue-i18n.routes.entry',
