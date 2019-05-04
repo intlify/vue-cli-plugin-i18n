@@ -1,0 +1,3 @@
+files:
+  - source: /client-addon/src/locales/en.json
+    translation: /client-addon/src/locales/%two_letters_code%.json
