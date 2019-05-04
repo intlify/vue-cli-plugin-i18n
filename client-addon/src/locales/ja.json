@@ -17,52 +17,52 @@
             }
           }
         },
-        "editor": {
-          "messages": "メッセージ",
-          "paths": "パス"
+        "notification": {
+          "title": "Vue I18n",
+          "message": "{locale} を追加しました。"
         },
         "locale": {
-          "button": "ロケールを追加",
           "default": "{locale} (デフォルト)",
+          "button": "ロケールを追加",
           "modal": {
+            "title": "ロケールを追加",
             "body": {
-              "hint": "BCP47 によるロケール名で推奨",
-              "info": "BCP47 について ...",
               "label": "ロケールを入力",
               "placeholder": "例: ja",
+              "hint": "BCP47 によるロケール名で推奨",
+              "info": "BCP47 について ...",
               "error": "既にロケールが存在します。"
             },
-            "button": "追加",
-            "title": "ロケールを追加"
+            "button": "追加"
           }
         },
-        "message-field": {
-          "placeholder": "メッセージを編集"
-        },
-        "notification": {
-          "message": "{locale} を追加しました。",
-          "title": "Vue I18n"
+        "editor": {
+          "paths": "パス",
+          "messages": "メッセージ"
         },
         "path-add-field": {
+          "placeholder": "パスの入力",
           "button": "パスを追加",
           "modal": {
+            "title": "確認",
             "body": "パスを追加してもよろしいですか？",
             "button": "追加",
-            "title": "確認",
             "messages": {
               "already": "既にパスが存在します。",
               "breaking": "このパスを追加した場合、対応するパスの階層構造が失われるかもしれません。"
             }
-          },
-          "placeholder": "パスの入力"
+          }
         },
         "path-field": {
+          "placeholder": "パスを更新",
           "modal": {
+            "title": "確認",
             "body": "パスを更新してもよろしいですか？",
-            "button": "更新",
-            "title": "確認"
-          },
-          "placeholder": "パスを更新"
+            "button": "更新"
+          }
+        },
+        "message-field": {
+          "placeholder": "メッセージを編集"
         }
       }
     }
