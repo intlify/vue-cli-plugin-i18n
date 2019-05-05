@@ -14,7 +14,25 @@ test('report command: basic', async () => {
     src: './tests/fixture/**/*.?(js|vue)',
     locales: './tests/fixture/locales/*.json'
   })
-  expect(output).toMatchSnapshot()
+  const missingKeys = [
+    { path: 'messages.fuga.foo', language: 'en' },
+    { path: 'messages.buz', language: 'ja' },
+    { path: 'messages.bar', language: 'ja' },
+    { path: 'messages.hoge', language: 'ja' },
+    { path: 'messages.fuga.foo', language: 'ja' }
+  ]
+  const unusedKeys = [
+    { path: 'messages.piyo', language: 'en' },
+    { path: 'messages.piyo', language: 'ja' }
+  ]
+  const predicate = item => {
+    return {
+      path: item.path,
+      language: item.language
+    }
+  }
+  expect(output.missingKeys.map(predicate)).toEqual(missingKeys)
+  expect(output.unusedKeys.map(predicate)).toEqual(unusedKeys)
 })
 
 test('report command: required arguments', async () => {
@@ -28,7 +46,7 @@ test('report command: required arguments', async () => {
   }], process.cwd())
 
   const output = await service.run('i18n:report', {})
-  expect(output).toMatchSnapshot()
+  expect(output).toBeUndefined()
 })
  
 test('report command: optional arguments', async () => {
@@ -47,5 +65,18 @@ test('report command: optional arguments', async () => {
     type: 'missing',
     output: './tests/output.json'
   })
-  expect(output).toMatchSnapshot()
+  const missingKeys = [
+    { path: 'messages.fuga.foo', language: 'en' },
+    { path: 'messages.buz', language: 'ja' },
+    { path: 'messages.bar', language: 'ja' },
+    { path: 'messages.hoge', language: 'ja' },
+    { path: 'messages.fuga.foo', language: 'ja' }
+  ]
+  const predicate = item => {
+    return {
+      path: item.path,
+      language: item.language
+    }
+  }
+  expect(output.missingKeys.map(predicate)).toEqual(missingKeys)
 })
