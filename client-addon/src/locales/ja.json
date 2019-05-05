@@ -19,7 +19,7 @@
         },
         "task": {
           "report": {
-            "description": "Report the missing locale message keys and unused keys",
+            "description": "Report missing keys & unused keys",
             "prompts": {
               "type": "reporting type",
               "output": "create a json file out of report"
