@@ -21,8 +21,8 @@
           "report": {
             "description": "Report missing keys & unused keys",
             "prompts": {
-              "type": "reporting type",
-              "output": "create a json file out of report"
+              "type": " レポート種別",
+              "output": "レポートの json ファイルを作成する"
             }
           }
         },
