@@ -19,10 +19,10 @@
         },
         "task": {
           "report": {
-            "description": "Report missing keys & unused keys",
+            "description": "不明なキー & 未使用なキーをレポート",
             "prompts": {
-              "type": " レポート種別",
-              "output": "レポートの json ファイルを作成する"
+              "type": "レポートの種類",
+              "output": "json ファイルを出力してレポート"
             }
           }
         },
