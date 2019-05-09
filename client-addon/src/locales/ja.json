@@ -17,6 +17,15 @@
             }
           }
         },
+        "task": {
+          "report": {
+            "description": "不明なキー & 未使用なキーをレポート",
+            "prompts": {
+              "type": "レポートの種類",
+              "output": "json ファイルを出力してレポート"
+            }
+          }
+        },
         "notification": {
           "title": "Vue I18n",
           "message": "{locale} を追加しました。"
