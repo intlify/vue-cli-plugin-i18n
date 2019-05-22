@@ -1,0 +1,79 @@
+{
+    "org": {
+        "kazupon": {
+            "vue-i18n": {
+                "title": "",
+                "tooltip": "",
+                "config": {
+                    "description": "",
+                    "prompts": {
+                        "locale": {
+                            "message": "",
+                            "description": ""
+                        },
+                        "fallbackLocale": {
+                            "message": "",
+                            "description": ""
+                        }
+                    }
+                },
+                "task": {
+                    "report": {
+                        "description": "",
+                        "prompts": {
+                            "type": "",
+                            "output": ""
+                        }
+                    }
+                },
+                "notification": {
+                    "title": "",
+                    "message": ""
+                },
+                "locale": {
+                    "default": "",
+                    "button": "",
+                    "modal": {
+                        "title": "",
+                        "body": {
+                            "label": "",
+                            "placeholder": "",
+                            "hint": "",
+                            "info": "",
+                            "error": ""
+                        },
+                        "button": ""
+                    }
+                },
+                "editor": {
+                    "paths": "",
+                    "messages": ""
+                },
+                "path-add-field": {
+                    "placeholder": "",
+                    "button": "",
+                    "modal": {
+                        "title": "",
+                        "body": "",
+                        "button": "",
+                        "messages": {
+                            "already": "",
+                            "breaking": ""
+                        }
+                    }
+                },
+                "path-field": {
+                    "placeholder": "",
+                    "modal": {
+                        "title": "",
+                        "body": "",
+                        "button": ""
+                    }
+                },
+                "message-field": {
+                    "placeholder": "编辑邮件"
+                }
+            }
+        }
+    }
+}
