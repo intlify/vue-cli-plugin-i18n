@@ -1,0 +1,79 @@
+{
+    "org": {
+        "kazupon": {
+            "vue-i18n": {
+                "title": "プロジェクトローカライゼーション",
+                "tooltip": "ローカライゼーション",
+                "config": {
+                    "description": "I18n の設定",
+                    "prompts": {
+                        "locale": {
+                            "message": "ロケール",
+                            "description": "プロジェクトローカライズゼーションのロケール"
+                        },
+                        "fallbackLocale": {
+                            "message": "フォールバックロケール",
+                            "description": "プロジェクトローカライズゼーションのフォールバックロケール"
+                        }
+                    }
+                },
+                "task": {
+                    "report": {
+                        "description": "不明なキー & 未使用なキーをレポート",
+                        "prompts": {
+                            "type": "レポートの種類",
+                            "output": "json ファイルを出力してレポート"
+                        }
+                    }
+                },
+                "notification": {
+                    "title": "Vue I18n",
+                    "message": "{locale} を追加しました。"
+                },
+                "locale": {
+                    "default": "{locale} (デフォルト)",
+                    "button": "ロケールを追加",
+                    "modal": {
+                        "title": "ロケールを追加",
+                        "body": {
+                            "label": "ロケールを入力",
+                            "placeholder": "例: ja",
+                            "hint": "BCP47 によるロケール名で推奨",
+                            "info": "BCP47 について ...",
+                            "error": "既にロケールが存在します。"
+                        },
+                        "button": "追加"
+                    }
+                },
+                "editor": {
+                    "paths": "パス",
+                    "messages": "メッセージ"
+                },
+                "path-add-field": {
+                    "placeholder": "パスの入力",
+                    "button": "パスを追加",
+                    "modal": {
+                        "title": "確認",
+                        "body": "パスを追加してもよろしいですか？",
+                        "button": "追加",
+                        "messages": {
+                            "already": "既にパスが存在します。",
+                            "breaking": "このパスを追加した場合、対応するパスの階層構造が失われるかもしれません。"
+                        }
+                    }
+                },
+                "path-field": {
+                    "placeholder": "パスを更新",
+                    "modal": {
+                        "title": "確認",
+                        "body": "パスを更新してもよろしいですか？",
+                        "button": "更新"
+                    }
+                },
+                "message-field": {
+                    "placeholder": "メッセージを編集"
+                }
+            }
+        }
+    }
+}
