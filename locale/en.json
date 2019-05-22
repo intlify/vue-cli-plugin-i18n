@@ -1,0 +1,79 @@
+{
+    "org": {
+        "kazupon": {
+            "vue-i18n": {
+                "title": "Project Localizations",
+                "tooltip": "Localizations",
+                "config": {
+                    "description": "Settings of I18n",
+                    "prompts": {
+                        "locale": {
+                            "message": "Locale",
+                            "description": "Locale of project localization"
+                        },
+                        "fallbackLocale": {
+                            "message": "Fallback Locale",
+                            "description": "Fallback locale of project localization"
+                        }
+                    }
+                },
+                "task": {
+                    "report": {
+                        "description": "Report missing keys & unused keys",
+                        "prompts": {
+                            "type": "reporting type",
+                            "output": "create a json file out of report"
+                        }
+                    }
+                },
+                "notification": {
+                    "title": "Vue I18n",
+                    "message": "Added a {locale}"
+                },
+                "locale": {
+                    "default": "{locale} (default)",
+                    "button": "Add a locale",
+                    "modal": {
+                        "title": "Add a locale",
+                        "body": {
+                            "label": "Input a locale",
+                            "placeholder": "e.g: ja",
+                            "hint": "Recommended locale name according to BCP47",
+                            "info": "See the BCP47 ...",
+                            "error": "already exist a locale."
+                        },
+                        "button": "Add"
+                    }
+                },
+                "editor": {
+                    "paths": "Paths",
+                    "messages": "Messages"
+                },
+                "path-add-field": {
+                    "placeholder": "Input a path",
+                    "button": "Add a path",
+                    "modal": {
+                        "title": "Confirm",
+                        "body": "Are you sure add the path?",
+                        "button": "Add",
+                        "messages": {
+                            "already": "already exist path.",
+                            "breaking": "If this path is added, the hierarchical structure of the corresponding path may be lost."
+                        }
+                    }
+                },
+                "path-field": {
+                    "placeholder": "Edit a path",
+                    "modal": {
+                        "title": "Confirm",
+                        "body": "Are you sure update the path?",
+                        "button": "Update"
+                    }
+                },
+                "message-field": {
+                    "placeholder": "Edit a message"
+                }
+            }
+        }
+    }
+}
