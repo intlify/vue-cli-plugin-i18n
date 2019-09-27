@@ -10310,10 +10310,10 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha512-KmvZVtmM26BQOMK1rwUZsrqxEGeKiYSZGA7SNWE6uExx8UX/cj9hq2MRV/wWC3Cq6AoeDGk57rL9YMFRel/q+g==
 
-vue-i18n-extract@^0.4.13:
-  version "0.4.13"
-  resolved "https://registry.yarnpkg.com/vue-i18n-extract/-/vue-i18n-extract-0.4.13.tgz#e8f5d91c24a0eca9fc9cabc60757811cc88b0534"
-  integrity sha512-3SVeYhjxivoq2yYtBBMBqpshNnXI9KfvBwA1A0BE61GzTQH6ueMfq1g9CykMCAwfXm3bwgthhlzrhKaBPxxfAw==
+vue-i18n-extract@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-i18n-extract/-/vue-i18n-extract-1.0.2.tgz#0a136e12d1634d6799e187aad81a7003d02f67a5"
+  integrity sha512-+zwDKvle4KcfloXZnj5hF01ViKDiFr5RMx5507D7oyDXpSleRpekF5YHgZa/+Ra6Go68//z0Nya58J9tKFsCjw==
   dependencies:
     cli-table3 "^0.5.1"
     dot-object "^1.7.1"

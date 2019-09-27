@@ -17,7 +17,7 @@
     "rimraf": "^2.6.3",
     "vue": "^2.5.16",
     "vue-i18n": "^8.0.0",
-    "vue-i18n-extract": "^0.4.13"
+    "vue-i18n-extract": "^1.0.2"
   },
   "devDependencies": {
     "@vue/cli": "^3.4.1",
