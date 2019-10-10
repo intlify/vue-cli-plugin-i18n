@@ -233,6 +233,7 @@ export default {
   grid-area: content;
   overflow-x: hidden;
   overflow-y: auto;
+  margin: 16px;
 }
 
 .shell {
@@ -243,7 +244,7 @@ export default {
 }
 
 .content {
-  flex: 100% 1 1;
+  flex: 1 1 100%;
   height: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -259,7 +260,7 @@ export default {
 
 .localization-header {
   display: grid;
-  grid-gap: 6px;
+  grid-gap: 12px;
   grid-template-columns: 6fr 6fr;
 }
 
@@ -269,7 +270,7 @@ export default {
 }
 
 .localization-header .path {
-  padding: 12px;
+  padding: 12px 20px;
   background: #f8fbfb;
   border-bottom-color: #42b983;
   border-bottom-style: solid;
@@ -277,7 +278,7 @@ export default {
 }
 
 .localization-header .locale {
-  padding: 12px;
+  padding: 12px 20px;
   background: #f8fbfb;
   border-bottom-color: #42b983;
   border-bottom-style: solid;
@@ -301,7 +302,7 @@ ul.localization-body {
 
 ul.localization-body li {
   display: grid;
-  grid-gap: 6px;
+  grid-gap: 12px;
   grid-template-columns: 6fr 6fr;
 }
 
