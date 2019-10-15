@@ -130,9 +130,9 @@ export default {
 <style scoped>
 .message {
   height: 24px;
-  padding: 12px;
+  padding: 12px 20px;
   background: #f8fbfb;
-  border-bottom-color: #dbebec;
+  border-bottom-color: #bbe6d6;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   display: flex;
@@ -157,8 +157,13 @@ export default {
   display: flex;
 }
 
+.vue-ui-button.primary {
+  margin-right: 6px;
+}
+
 .vue-ui-dark-mode .message {
   background: #1d2935;
+  border-bottom-color: #344a5f;
 }
 
 .vue-ui-dark-mode .message:hover {
