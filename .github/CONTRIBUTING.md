@@ -10,7 +10,7 @@
 
   - For simple beginner questions, you can get quick answers from [Vue Land](https://vue-land.js.org)
 
-- Try to search for your issue, it may have already been answered or even fixed in the development branch.
+- Try to search for your issue, it may have already been answered or even fixed in the master branch.
 
 - Check if the issue is reproducible with the latest stable version of vue-cli-plugin-i18n. If you are using a pre-release, please indicate the specific version you are using.
 
@@ -24,7 +24,7 @@
 
 - The `master` branch is basically just a snapshot of the latest stable release. All development should be done in dedicated branches. **Do not submit PRs against the `master` branch.**
 
-- Checkout a topic branch from the relevant branch, e.g. `dev`, and merge back against that branch.
+- Checkout a topic branch from the relevant branch, e.g. `master`, and merge back against that branch.
 
 - It's OK to have multiple small commits as you work on the PR - we will let GitHub automatically squash it before merging.
 
@@ -40,11 +40,11 @@
 
 ### Work Step Example
 - Fork the repository from [kazupon/vue-cli-plugin-i18n](https://github.com/kazupon/vue-cli-plugin-i18n) !
-- Create your topic branch from `dev`: `git branch my-new-topic origin/dev`
+- Create your topic branch from `master`: `git branch my-new-topic origin/master`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
 - Push to the branch: `git push origin my-new-topic`
-- Submit a pull request to `dev` branch of `kazupon/vue-cli-plugin-i18n` repository !
+- Submit a pull request to `master` branch of `kazupon/vue-cli-plugin-i18n` repository !
 
 ## Development Setup
 
