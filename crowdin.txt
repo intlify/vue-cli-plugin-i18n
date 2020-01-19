@@ -1,0 +1,32 @@
+7c9ebf8d8090cc270b5b338fcea01803
+
+curl \
+  -F "files[en.json]=@en.json" \
+  -F "type=json" \
+  "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/add-file?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+curl \
+  -F "files[en.json]=@en.json" \
+  -F "type=json" \
+  "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/update-file?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+curl \
+  -F "files[en.json]=@en.json" \
+  -F "type=json" \
+  -F "language=en" \
+  -F "auto_approve_imported=1" \
+  "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/upload-translation?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+  curl \
+  -F "files[ja.json]=@ja.json" \
+  -F "type=json" \
+  -F "language=ja" \
+  -F "auto_approve_imported=1" \
+  "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/upload-translation?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+curl "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/status?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+curl "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/info?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+curl "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/export?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803"
+
+wget -O ja-x.json "https://api.crowdin.com/api/project/vue-cli-plugin-i18n/export-file?login=kazupon&account-key=7c9ebf8d8090cc270b5b338fcea01803&file=en.json&language=ja&format=json"
