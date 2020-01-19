@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "debug": "^4.0.0",
-    "deepmerge": "^2.1.1",
+    "deepmerge": "^4.0.0",
     "dotenv": "^6.0.0",
     "flat": "^4.0.0",
     "rimraf": "^2.6.3",
