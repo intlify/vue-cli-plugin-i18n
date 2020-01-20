@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@vue/cli-ui": "^3.0.0-rc.5",
-    "flat": "^4.1.0",
+    "flat": "^5.0.0",
     "vue": "^2.5.16"
   },
   "devDependencies": {
