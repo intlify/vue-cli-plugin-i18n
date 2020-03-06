@@ -34,9 +34,9 @@
     "vue-i18n-extract": "^1.0.2"
   },
   "devDependencies": {
-    "@vue/cli": "^3.4.1",
-    "@vue/cli-service": "^3.4.1",
-    "@vue/cli-test-utils": "^3.4.1",
+    "@vue/cli": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-test-utils": "^4.0.0",
     "eslint": "^5.12.0",
     "eslint-plugin-vue": "^5.1.0",
     "inquirer": "^7.0.0",
