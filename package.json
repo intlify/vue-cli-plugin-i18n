@@ -45,9 +45,6 @@
     "shipjs": "^0.18.0"
   },
   "homepage": "https://github.com/kazupon/vue-cli-plugin-i18n#readme",
-  "jest": {
-    "testEnvironment": "node"
-  },
   "keywords": [
     "plugin",
     "vue",
