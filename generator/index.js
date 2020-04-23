@@ -29,7 +29,7 @@ module.exports = (api, options, rootOptions) => {
         'i18n:report': `vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales '${`./src/${localeDir}/**/*.json`}'`
       },
       dependencies: {
-        'vue-i18n': '^8.0.0'
+        'vue-i18n': '^8.17.3'
       },
       vue: {
         pluginOptions: {
@@ -42,7 +42,7 @@ module.exports = (api, options, rootOptions) => {
 
     if (enableInSFC) {
       pkg.devDependencies = {
-        '@kazupon/vue-i18n-loader': '^0.3.0'
+        '@intlify/vue-i18n-loader': '^1.0.0'
       }
     }
 
