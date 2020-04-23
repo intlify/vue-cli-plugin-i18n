@@ -1,3 +1,13 @@
+
+## v1.0.0 (2020-04-23)
+
+#### :boom: Breaking Change
+* [#97](https://github.com/kazupon/vue-cli-plugin-i18n/pull/97) upgrade vue-i18n and vue-i18n-loader ([@kazupon](https://github.com/kazupon))
+* [#95](https://github.com/kazupon/vue-cli-plugin-i18n/pull/95) migrate to vue-cli v4 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## 0.6.1 (2020-01-18)
 
 #### :bug: Bug Fixes
