@@ -7,6 +7,8 @@ module.exports = {
   }),
   outputDir: '../client-addon-dist',
   pluginOptions: {
-    enableInSFC: true
+    i18n: {
+      enableInSFC: true
+    }
   }
 }
