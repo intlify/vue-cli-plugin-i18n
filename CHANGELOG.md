@@ -1,14 +1,13 @@
 ## 0.6.1 (2020-01-18)
 
-### :bug: Bug Fixes
+#### :bug: Bug Fixes
 
 * **addon:** fix initialization on ui ([#41](https://github.com/kazupon/vue-cli-plugin-i18n/issues/41)) by [@orblazer](https://github.com/orblazer) ([80bd269](https://github.com/kazupon/vue-cli-plugin-i18n/commit/80bd269)), closes [#41](https://github.com/kazupon/vue-cli-plugin-i18n/issues/41)
 * **addon:** fix try import folder in locales ([#42](https://github.com/kazupon/vue-cli-plugin-i18n/issues/42)) by [@orblazer](https://github.com/orblazer) ([8f124b5](https://github.com/kazupon/vue-cli-plugin-i18n/commit/8f124b5)), closes [#42](https://github.com/kazupon/vue-cli-plugin-i18n/issues/42)
 * **addon:** fix try import other files than json files ([#43](https://github.com/kazupon/vue-cli-plugin-i18n/issues/43)) by [@orblazer](https://github.com/orblazer) ([337f46e](https://github.com/kazupon/vue-cli-plugin-i18n/commit/337f46e)), closes [#43](https://github.com/kazupon/vue-cli-plugin-i18n/issues/43) [#39](https://github.com/kazupon/vue-cli-plugin-i18n/issues/39)
 * **client-addon:** Build client-addon dir ([#65](https://github.com/kazupon/vue-cli-plugin-i18n/issues/65)) by [@robinsondotnet](https://github.com/robinsondotnet) ([a69405a](https://github.com/kazupon/vue-cli-plugin-i18n/commit/a69405a)), closes [#65](https://github.com/kazupon/vue-cli-plugin-i18n/issues/65)
 
-
-### :zap: Improvements
+#### :zap: Improvements
 
 * **client-addon:** update some styles ([#62](https://github.com/kazupon/vue-cli-plugin-i18n/issues/62)) by [@jCrip](https://github.com/jCrip) ([1f19a93](https://github.com/kazupon/vue-cli-plugin-i18n/commit/1f19a93)), closes [#62](https://github.com/kazupon/vue-cli-plugin-i18n/issues/62)
 * **ui:** tweak i18n:report task ([40e1843](https://github.com/kazupon/vue-cli-plugin-i18n/commit/40e1843))
