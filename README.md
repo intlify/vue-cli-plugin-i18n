@@ -1,7 +1,7 @@
 # :globe_with_meridians: vue-cli-plugin-i18n
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
-[![CircleCI](https://circleci.com/gh/kazupon/vue-cli-plugin-i18n.svg?style=svg)](https://circleci.com/gh/kazupon/vue-cli-plugin-i18n)
+![Test](https://github.com/kazupon/vue-cli-plugin-i18n/workflows/Test/badge.svg)
 [![vue-cli-plugin-i18n Dev Token](https://badge.devtoken.rocks/vue-cli-plugin-i18n)](https://devtoken.rocks/package/vue-cli-plugin-i18n)
 
 Vue CLI plugin to add vue-i18n to your Vue Project
@@ -15,7 +15,7 @@ vue-cli-plugin-i18n will soon be transferred to [intlify organaization](https://
 
 The `vue-cli-plugin-i18n` that has been released on npm will be released as `@intlify/vue-cli-plugin-i18n` in near future.
 
-Intlify is a new i18n project kickoff by @kazupon. 😉 
+Intlify is a new i18n project kickoff by @kazupon. 😉
 
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
