@@ -1,6 +1,4 @@
-<a name="0.6.1"></a>
-## [0.6.1](https://github.com/kazupon/vue-cli-plugin-i18n/compare/v0.6.0...v0.6.1) (2020-01-18)
-
+## 0.6.1 (2020-01-18)
 
 ### :bug: Bug Fixes
 
