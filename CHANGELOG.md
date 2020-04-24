@@ -1,4 +1,13 @@
 
+## v1.0.1 (2020-04-24)
+
+#### :bug: Bug Fixes
+* [#100](https://github.com/kazupon/vue-cli-plugin-i18n/pull/100) fix: webpack config chainning ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v1.0.0 (2020-04-23)
 
 #### :boom: Breaking Change
