@@ -26,7 +26,7 @@ module.exports = (api, options, rootOptions) => {
 
     const pkg = {
       scripts: {
-        'i18n:report': `vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales '${`./src/${localeDir}/**/*.json`}'`
+        'i18n:report': `vue-cli-service i18n:report --src "./src/**/*.?(js|vue)" --locales "${`./src/${localeDir}/**/*.json`}"`
       },
       dependencies: {
         'vue-i18n': '^8.17.3'
