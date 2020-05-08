@@ -37,7 +37,7 @@
     "@vue/cli": "^4.3.1",
     "@vue/cli-service": "^4.3.1",
     "@vue/cli-test-utils": "^4.3.1",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "inquirer": "^7.0.0",
     "jest": "^25.0.0",
