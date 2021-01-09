@@ -39,12 +39,12 @@
   - Add appropriate test coverage if applicable.
 
 ### Work Step Example
-- Fork the repository from [kazupon/vue-cli-plugin-i18n](https://github.com/kazupon/vue-cli-plugin-i18n) !
+- Fork the repository from [kazupon/vue-cli-plugin-i18n](https://github.com/intlify/vue-cli-plugin-i18n) !
 - Create your topic branch from `master`: `git branch my-new-topic origin/master`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
 - Push to the branch: `git push origin my-new-topic`
-- Submit a pull request to `master` branch of `kazupon/vue-cli-plugin-i18n` repository !
+- Submit a pull request to `master` branch of `intlify/vue-cli-plugin-i18n` repository !
 
 ## Development Setup
 

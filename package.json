@@ -7,7 +7,7 @@
     "email": "kawakazu80@gmail.com"
   },
   "bugs": {
-    "url": "https://github.com/kazupon/vue-cli-plugin-i18n/issues"
+    "url": "https://github.com/intlify/vue-cli-plugin-i18n/issues"
   },
   "changelog": {
     "labels": {
@@ -44,7 +44,7 @@
     "lerna-changelog": "^1.0.0",
     "shipjs": "^0.23.0"
   },
-  "homepage": "https://github.com/kazupon/vue-cli-plugin-i18n#readme",
+  "homepage": "https://github.com/intlify/vue-cli-plugin-i18n#readme",
   "keywords": [
     "plugin",
     "vue",
@@ -55,7 +55,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kazupon/vue-cli-plugin-i18n.git"
+    "url": "git+https://github.com/intlify/vue-cli-plugin-i18n.git"
   },
   "scripts": {
     "clean": "rimraf coverage tests/e2e/projects/*",

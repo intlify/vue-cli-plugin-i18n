@@ -1,25 +1,14 @@
 # :globe_with_meridians: vue-cli-plugin-i18n
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
-![Test](https://github.com/kazupon/vue-cli-plugin-i18n/workflows/Test/badge.svg)
+![Test](https://github.com/intlify/vue-cli-plugin-i18n/workflows/Test/badge.svg)
 [![vue-cli-plugin-i18n Dev Token](https://badge.devtoken.rocks/vue-cli-plugin-i18n)](https://devtoken.rocks/package/vue-cli-plugin-i18n)
 
 Vue CLI plugin to add vue-i18n to your Vue Project
 
-<a href="https://www.patreon.com/kazupon" target="_blank">
-  <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patreon">
-</a>
-
-## :loudspeaker: Notice
-vue-cli-plugin-i18n will soon be transferred to [intlify organaization](https://github.com/intlify). After that, it will be developed and maintained on intlify.
-
-The `vue-cli-plugin-i18n` that has been released on npm will be released as `@intlify/vue-cli-plugin-i18n` in near future.
-
-Intlify is a new i18n project kickoff by @kazupon. 😉
-
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
-- Locale messages in Single File components with [vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader)
+- Locale messages in Single File components with [vue-i18n-loader](https://github.com/intlify/vue-i18n-loader)
 - Locale messages missing & unused reporting (experimental)
 - Env Variables
 
@@ -78,18 +67,18 @@ module.exports = {
 See the `prompts.js`.
 
 ## :scroll: Changelog
-Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/CHANGELOG.md).
+Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/CHANGELOG.md).
 
 
 ## :exclamation: Issues
-Please make sure to read the [Issue Reporting Checklist](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
+Please make sure to read the [Issue Reporting Checklist](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
 
 ## :white_check_mark: TODO
-Managed with [GitHub Projects](https://github.com/kazupon/vue-cli-plugin-i18n/projects/1)
+Managed with [GitHub Projects](https://github.com/intlify/vue-cli-plugin-i18n/projects/1)
 
 ## :muscle: Contribution
-Please make sure to read the [Contributing Guide](https://github.com/kazupon/vue-cli-plugin-i18n/blob/dev/.github/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 
 ## :copyright: License
