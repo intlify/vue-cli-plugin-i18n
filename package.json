@@ -45,6 +45,9 @@
     "npm-run-all": "^4.1.5",
     "shipjs": "^0.23.0"
   },
+  "engines": {
+    "node": ">= 12"
+  },
   "homepage": "https://github.com/intlify/vue-cli-plugin-i18n#readme",
   "keywords": [
     "plugin",
@@ -60,14 +63,14 @@
   },
   "scripts": {
     "clean": "npm-run-all --parallel clean:*",
-    "clean:test": "rimraf coverage tests/e2e/projects/*",
     "clean:cache": "jest --clearCache",
+    "clean:test": "rimraf coverage tests/e2e/projects/*",
     "lint": "eslint --fix --ext .js .",
     "lint:ci": "eslint --ext .js .",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
     "test": "npm run test:unit",
-    "test:unit": "yarn clean:cache && jest --config ./jest.config.js ./tests/unit/*.spec.js",
-    "test:e2e": "npm-run-all clean:* && jest --runInBand --config ./jest.config.js ./tests/e2e/*.spec.js"
+    "test:e2e": "npm-run-all clean:* && jest --runInBand --config ./jest.config.js ./tests/e2e/*.spec.js",
+    "test:unit": "yarn clean:cache && jest --config ./jest.config.js ./tests/unit/*.spec.js"
   }
 }
