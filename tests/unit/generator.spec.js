@@ -43,5 +43,4 @@ test('typescript', async () => {
   const pack = files['package.json']
   expect(pack).toMatch(`"vue-i18n": "^8.17.3"`)
   expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^1.0.0"`)
-  expect(pack).toMatch(`"@types/webpack": "^4.4.0"`)
 })
