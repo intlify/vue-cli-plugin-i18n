@@ -1,6 +1,6 @@
 const createMockService = require('../helper/createMockService')
 
-test('report command: basic', async () => {
+test.skip('report command: basic', async () => {
   const report = require('../../report')
 
   const service = createMockService([{
@@ -35,7 +35,7 @@ test('report command: basic', async () => {
   expect(output.unusedKeys.map(predicate)).toEqual(unusedKeys)
 })
 
-test('report command: required arguments', async () => {
+test.skip('report command: required arguments', async () => {
   const report = require('../../report')
 
   const service = createMockService([{
@@ -48,8 +48,8 @@ test('report command: required arguments', async () => {
   const output = await service.run('i18n:report', {})
   expect(output).toBeUndefined()
 })
- 
-test('report command: optional arguments', async () => {
+
+test.skip('report command: optional arguments', async () => {
   const report = require('../../report')
 
   const service = createMockService([{

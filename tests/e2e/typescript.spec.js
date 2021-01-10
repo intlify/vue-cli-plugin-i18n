@@ -1,16 +1,10 @@
 jest.setTimeout(10 * 60 * 1000)
+jest.mock('inquirer')
 
 const create = require('../helper/create')
 
-beforeEach(() => {
-  jest.mock('inquirer', () => {
-    return require('../helper/mockInquirer')
-  })
-})
-
 afterEach(() => {
   jest.clearAllMocks()
-  jest.unmock('inquirer')
 })
 
 test(`typescript project`, async () => {
@@ -20,7 +14,7 @@ test(`typescript project`, async () => {
   const plugins = {
     '@vue/cli-plugin-babel': {},
     '@vue/cli-plugin-typescript': {
-      classComponent: true 
+      classComponent: true
     }
   }
   expectPrompts([{
@@ -41,5 +35,4 @@ test(`typescript project`, async () => {
   expect(project.has('src/components/HelloI18n.vue')).toBe(true)
   expect(pkg.dependencies['vue-i18n']).not.toBeUndefined()
   expect(pkg.devDependencies['vue-cli-plugin-i18n']).not.toBeUndefined()
-  expect(pkg.devDependencies['@kazupon/vue-i18n-loader']).not.toBeUndefined()
 })

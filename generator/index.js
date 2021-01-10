@@ -45,14 +45,6 @@ module.exports = (api, options, rootOptions) => {
         '@intlify/vue-i18n-loader': '^1.0.0'
       }
     }
-
-    if (lang === 'ts') {
-      const devTsDependencies = {}
-      if (!checkInstalled('./node_modules/@types/webpack/package.json')) {
-        devTsDependencies['@types/webpack'] = '^4.4.0'
-      }
-      pkg.devDependencies = { ...pkg.devDependencies, ...devTsDependencies }
-    }
     debug('pkg', pkg)
 
     api.extendPackage(pkg)
@@ -128,16 +120,5 @@ module.exports = (api, options, rootOptions) => {
       api.exitLog(`cannot write to ${envPath}`, 'error')
       return
     }
-  })
-
-  api.postProcessFiles(files => {
-    debug('postProcessFiles called')
-    if (!api.hasPlugin('typescript')) { return }
-    const tsConfigRaw = files['tsconfig.json']
-    if (!tsConfigRaw) { return }
-    const tsConfig = JSON.parse(tsConfigRaw)
-    tsConfig.compilerOptions.types.push('webpack')
-    tsConfig.compilerOptions.types.push('webpack-env')
-    files['tsconfig.json'] = JSON.stringify(tsConfig, null, 2)
   })
 }
