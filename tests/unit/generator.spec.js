@@ -35,13 +35,13 @@ test('typescript', async () => {
   }, {
     id: 'i18n',
     apply: require('../../generator'),
-    options: { locale: 'ja', localeDir: 'loc', locale: 'en', enableInSFC: true }
+    options: { locale: 'ja', localeDir: 'loc', enableInSFC: true }
   }])
 
   // check files
   const i18n = files['src/i18n.ts']
   expect(i18n).toMatch(`const locales = require.context('./loc', true, /[A-Za-z0-9-_,\\s]+\\.json$/i)`)
-  const locale = files['src/locales/en.json']
+  const locale = files['src/loc/ja.json']
   expect(locale).toMatch(`{\n  "message": "hello i18n !!"\n}`)
   const sfc = files['src/components/HelloI18n.vue']
   expect(sfc).toMatch(`export default Vue.extend({`)
