@@ -29,7 +29,7 @@ module.exports = (api, options, rootOptions) => {
         'i18n:report': `vue-cli-service i18n:report --src "./src/**/*.?(js|vue)" --locales "${`./src/${localeDir}/**/*.json`}"`
       },
       dependencies: {
-        'vue-i18n': '^8.17.3'
+        'vue-i18n': '^8.22.3'
       },
       vue: {
         pluginOptions: {
@@ -60,14 +60,26 @@ module.exports = (api, options, rootOptions) => {
     /*
      * render templates
      */
+    const renderOptions = { ...additionalOptions }
 
     // i18n templates for program language
-    api.render(`./templates/${lang}`, { ...additionalOptions })
+    api.render(`./templates/${lang}`, renderOptions)
+
+    // locale messages
+    const defaultLocaleMessages = JSON.stringify({
+      message: 'hello i18n !!'
+    }, null, 2)
+    api.render((files, render) => {
+      files[`src/${localeDir}/${locale}.json`] = render(defaultLocaleMessages, renderOptions)
+    })
 
     // locale messages in SFC examples
     if (enableInSFC) {
-      api.render('./templates/sfc', { ...additionalOptions })
+      api.render('./templates/sfc', renderOptions)
     }
+
+    // env
+
   } catch (e) {
     api.exitLog(`unexpected error in vue-cli-plugin-i18n: ${e.message}`, 'error')
     return
@@ -75,34 +87,6 @@ module.exports = (api, options, rootOptions) => {
 
   api.onCreateComplete(() => {
     debug('onCreateComplete called')
-    const defaultLocaleMessages = JSON.stringify({
-      message: 'hello i18n !!'
-    }, null, 2)
-
-    function writeLocaleFile (path) {
-      if (!exists(path)) {
-        if (!writeFile(path, defaultLocaleMessages)) {
-          api.exitLog(`cannot make ${path}`, 'error')
-          return
-        }
-      } else {
-        api.exitLog(`already exist ${path}`, 'info')
-      }
-    }
-
-    const localesDirPath = api.resolve(`src/${localeDir}`)
-    if (!exists(localesDirPath)) {
-      if (!mkdir(localesDirPath)) {
-        api.exitLog(`cannot make ${localesDirPath}`, 'error')
-        return
-      }
-    }
-
-    writeLocaleFile(api.resolve(`src/${localeDir}/${locale}.json`))
-    if (locale !== fallbackLocale) {
-      writeLocaleFile(api.resolve(`src/${localeDir}/${fallbackLocale}.json`))
-    }
-
     const envPath = api.resolve('.env')
     const envVars = exists(envPath) ? readEnv(envPath) : {}
 
