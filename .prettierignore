@@ -1,7 +1,7 @@
-node_modules
+coverage
+dist
+clinet-addon-dist
 templates
 templates-vue3
-client-addon
-client-addon-dist
 client-addon-dist/index.js
 client-addon/.eslintrc.js

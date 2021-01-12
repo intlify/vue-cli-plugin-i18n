@@ -3,12 +3,17 @@ const createMockService = require('../helper/createMockService')
 test.skip('report command: basic', async () => {
   const report = require('../../report')
 
-  const service = createMockService([{
-    id: 'vue-cli-plugin-i18n',
-    apply: api => {
-      api.registerCommand('i18n:report', report.options, report.service)
-    }
-  }], process.cwd())
+  const service = createMockService(
+    [
+      {
+        id: 'vue-cli-plugin-i18n',
+        apply: api => {
+          api.registerCommand('i18n:report', report.options, report.service)
+        }
+      }
+    ],
+    process.cwd()
+  )
 
   const output = await service.run('i18n:report', {
     src: './tests/fixture/**/*.?(js|vue)',
@@ -38,12 +43,17 @@ test.skip('report command: basic', async () => {
 test.skip('report command: required arguments', async () => {
   const report = require('../../report')
 
-  const service = createMockService([{
-    id: 'vue-cli-plugin-i18n',
-    apply: api => {
-      api.registerCommand('i18n:report', report.options, report.service)
-    }
-  }], process.cwd())
+  const service = createMockService(
+    [
+      {
+        id: 'vue-cli-plugin-i18n',
+        apply: api => {
+          api.registerCommand('i18n:report', report.options, report.service)
+        }
+      }
+    ],
+    process.cwd()
+  )
 
   const output = await service.run('i18n:report', {})
   expect(output).toBeUndefined()
@@ -52,12 +62,17 @@ test.skip('report command: required arguments', async () => {
 test.skip('report command: optional arguments', async () => {
   const report = require('../../report')
 
-  const service = createMockService([{
-    id: 'vue-cli-plugin-i18n',
-    apply: api => {
-      api.registerCommand('i18n:report', report.options, report.service)
-    }
-  }], process.cwd())
+  const service = createMockService(
+    [
+      {
+        id: 'vue-cli-plugin-i18n',
+        apply: api => {
+          api.registerCommand('i18n:report', report.options, report.service)
+        }
+      }
+    ],
+    process.cwd()
+  )
 
   const output = await service.run('i18n:report', {
     src: './tests/fixture/**/*.?(js|vue)',

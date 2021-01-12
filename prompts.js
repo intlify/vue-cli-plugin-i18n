@@ -1,10 +1,10 @@
 const debug = require('debug')('vue-cli-plugin-i18n:prompts')
 
 module.exports = pkg => {
-  const { semver } = require('@vue/cli-shared-utils')
-  const vue = require('vue')
-  debug('vue version', vue.version)
-  const isVue3 = (vue && semver.major(vue.version) === 3)
+  const { semver } = require(require.resolve('@vue/cli-shared-utils'))
+  const version = semver.minVersion(pkg.dependencies.vue)
+  debug('vue version', version)
+  const isVue3 = version.major === 3
 
   const prompts = [
     {
@@ -13,22 +13,32 @@ module.exports = pkg => {
       message: 'The locale of project localization.',
       validate: input => !!input,
       default: 'en'
-    }, {
+    },
+    {
       type: 'input',
       name: 'fallbackLocale',
       message: 'The fallback locale of project localization.',
       validate: input => !!input,
       default: 'en'
-    }, {
+    },
+    {
       type: 'input',
       name: 'localeDir',
-      message: 'The directory where store localization messages of project. It\'s stored under `src` directory.',
+      message:
+        "The directory where store localization messages of project. It's stored under `src` directory.",
       validate: input => !!input,
       default: 'locales'
     }
   ]
 
-  if (!isVue3) {
+  if (isVue3) {
+    prompts.push({
+      type: 'confirm',
+      name: 'enableLegacy',
+      message: 'Enable legacy API (compatible vue-i18n@v8.x) mode ?',
+      default: false
+    })
+  } else {
     prompts.push({
       type: 'confirm',
       name: 'enableInSFC',
@@ -37,5 +47,6 @@ module.exports = pkg => {
     })
   }
 
+  debug('prompts', prompts)
   return prompts
 }

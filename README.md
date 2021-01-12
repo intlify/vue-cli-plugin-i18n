@@ -6,11 +6,13 @@
 
 Vue CLI plugin to add vue-i18n to your Vue Project
 
+
 ## :star: Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/intlify/vue-i18n-loader)
 - Locale messages missing & unused reporting (experimental)
 - Env Variables
+
 
 ## :rocket: Getting Started
 If yon don't have a project created with Vue CLI:
@@ -26,6 +28,7 @@ cd my-vue-app
 vue add i18n
 ```
 
+
 ## :hammer: Injected Commands
 - **`vue-cli-service i18n:report`** (experimental)
 
@@ -33,6 +36,7 @@ vue add i18n
 
 > NOTE: limitation
 > `vue-cli-service i18n:report` cannot detect missing and unused keys from local messages of i18n custom blocks.
+
 
 ## :clipboard: Env variables
 When vue-i18n code files had been scaffolded into your project, the following env variables generate into `.env`:
@@ -47,6 +51,7 @@ When vue-i18n code files had been scaffolded into your project, the following en
 
 These env variables are read in `src/i18n.(js|ts)`.
 
+
 ## :wrench: Configrations
 
 `vue-cli-plugin-i18n` have some plugin options in `vue.config.js`:
@@ -55,16 +60,51 @@ These env variables are read in `src/i18n.(js|ts)`.
 module.exports = {
   pluginOptions: {
     i18n: {
-      locale: 'ja',             // The locale of project localization
-      fallbackLocale: 'en',     // The fallback locale of project localization
-      localeDir: 'locales',     // The directory where store localization messages of project
-      enableInSFC: false        // Enable locale messages in Single file components
+      locale: 'ja',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: false,
+      enableLegacy: false
     }
   }
 }
 ```
 
-See the `prompts.js`.
+### `locale`
+
+- **Type:** `string`
+- **Default in prompt:** `en`
+
+  The locale of project localization.
+
+### `fallbackLocale`
+
+- **Type:** `string`
+- **Default in prompt:** `en`
+
+  The fallback locale of project localization.
+
+### `localeDir`
+
+- **Type:** `string`
+- **Default in prompt:** `locales`
+
+  The directory where store localization messages of project. The specified directory will start from the `src` directory.
+
+### `enableInSFC`
+
+- **Type:** `boolean`
+- **Default in prompt:** `false`
+
+  Wheather enable locale messages in Single file components. Default `No` in propmpt, for Vue 2 and Vue I18n v8.x only.
+
+### `enableLegacy`
+
+- **Type:** `boolean`
+- **Default in prompt:** `false`
+
+  Wheather use legacy mode API in Vue I18n. Default `No` in propmpt, for Vue 3 and Vue I18n v9 or later.
+
 
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/CHANGELOG.md).

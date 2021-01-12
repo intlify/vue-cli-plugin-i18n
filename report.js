@@ -17,7 +17,7 @@ const options = {
   }
 }
 
-function resolveReportType (args) {
+function resolveReportType(args) {
   let type = EXTRACT_ALL
   if (args.type === 'missing') {
     type = EXTRACT_MISSING
@@ -27,7 +27,7 @@ function resolveReportType (args) {
   return type
 }
 
-async function service (args = {}, api) {
+async function service(args = {}, api) {
   if (!args.src) {
     console.log(chalk.red(`not specified 'src' argument.`))
     return
@@ -43,7 +43,11 @@ async function service (args = {}, api) {
   const localeFiles = resolve(currentDir, args.locales)
   const extractType = resolveReportType(args)
 
-  const i18nReport = i18nExtract.createI18NReport(srcFiles, localeFiles, extractType)
+  const i18nReport = i18nExtract.createI18NReport(
+    srcFiles,
+    localeFiles,
+    extractType
+  )
   i18nExtract.logI18NReport(i18nReport)
 
   if (args.output) {

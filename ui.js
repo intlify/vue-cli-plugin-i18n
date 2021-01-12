@@ -13,19 +13,21 @@ const {
 } = require('./utils')
 const i18n = require('./i18n')
 
-function getValuesFromPath (path, messages) {
+function getValuesFromPath(path, messages) {
   const paths = path.split('.')
   let p = null
   let target = messages
   while ((p = paths.shift())) {
     target = target[p]
-    if (!(isObject(target) || Array.isArray(target))) { break }
+    if (!(isObject(target) || Array.isArray(target))) {
+      break
+    }
   }
   debug('getValuesFromPath', path, target)
   return target
 }
 
-function assignValuesWithPath (path, value, messages) {
+function assignValuesWithPath(path, value, messages) {
   const paths = path.split('.')
   let p = null
   let target = messages
@@ -42,9 +44,10 @@ function assignValuesWithPath (path, value, messages) {
   debug('assignValuesToPath', path, value, messages)
 }
 
-function getLocales (targetPath) {
+function getLocales(targetPath) {
   debug('getLocales', targetPath)
-  return fs.readdirSync(targetPath)
+  return fs
+    .readdirSync(targetPath)
     .filter(locale => {
       const stat = fs.statSync(path.join(targetPath, locale))
       return stat.isFile() && path.extname(locale) === '.json'
@@ -54,7 +57,7 @@ function getLocales (targetPath) {
     })
 }
 
-function getLocaleMessages (targetPath, locales) {
+function getLocaleMessages(targetPath, locales) {
   debug('getLocaleMessages', targetPath, locales)
   return locales.reduce((val, locale) => {
     const fullPath = `${targetPath}/${locale}.json`
@@ -64,7 +67,7 @@ function getLocaleMessages (targetPath, locales) {
   }, {})
 }
 
-function getLocalePaths (messages) {
+function getLocalePaths(messages) {
   debug('getLocalePaths', messages)
   return Object.keys(messages).reduce((paths, locale) => {
     paths[locale] = Object.keys(flatten(messages[locale]))
@@ -72,21 +75,24 @@ function getLocalePaths (messages) {
   }, {})
 }
 
-function writeLocaleMessages (targetPath, locale, messages, order) {
+function writeLocaleMessages(targetPath, locale, messages, order) {
   debug('writeLocaleMessages', targetPath, locale, messages, order)
   const sortedMessages = sortObject(messages, order)
   debug('writeLocaleMessages after:', sortedMessages)
   return fs.writeFileSync(
     `${targetPath}/${locale}.json`,
-    JSON.stringify(sortedMessages, null, 2), { encoding: 'utf8' }
+    JSON.stringify(sortedMessages, null, 2),
+    { encoding: 'utf8' }
   )
 }
 
 module.exports = api => {
-  const { getSharedData, setSharedData, watchSharedData } = api.namespace('org.kazupon.vue-i18n.')
+  const { getSharedData, setSharedData, watchSharedData } = api.namespace(
+    'org.kazupon.vue-i18n.'
+  )
   let clientLocale = 'en'
 
-  function setupAddon (path, options) {
+  function setupAddon(path, options) {
     debug(`setupAddon: path -> ${path}, options -> ${options}`)
     const localeDir = options.localeDir
     setSharedData('order', 'asc')
@@ -95,7 +101,9 @@ module.exports = api => {
     const defaultLocale = env['VUE_APP_I18N_FALLBACK_LOCALE'] || 'en'
     setSharedData('current', defaultLocale)
     setSharedData('defaultLocale', defaultLocale)
-    debug(`setupAddon: current -> ${current}, defaultLocale -> ${defaultLocale}`)
+    debug(
+      `setupAddon: current -> ${current}, defaultLocale -> ${defaultLocale}`
+    )
     const locales = getLocales(`${path}/src/${localeDir}`)
     setSharedData('locales', locales)
     const messages = getLocaleMessages(`${path}/src/${localeDir}`, locales)
@@ -103,12 +111,15 @@ module.exports = api => {
     setSharedData('localePaths', getLocalePaths(messages))
   }
 
-  function setupProject (project, eventName) {
+  function setupProject(project, eventName) {
     const rawConfig = require(`${project.path}/vue.config`)
-    const config = (rawConfig.pluginOptions && rawConfig.pluginOptions.i18n)
-      ? rawConfig.pluginOptions.i18n
-      : { localeDir: 'locales' }
-    if (!config.localeDir) { config.localeDir = 'locales' }
+    const config =
+      rawConfig.pluginOptions && rawConfig.pluginOptions.i18n
+        ? rawConfig.pluginOptions.i18n
+        : { localeDir: 'locales' }
+    if (!config.localeDir) {
+      config.localeDir = 'locales'
+    }
     debug(`${eventName}: load vue.config`, config)
     setupAddon(project.path, config)
     return config
@@ -198,7 +209,12 @@ module.exports = api => {
       const flattendMessage = flatten(message)
       delete flattendMessage[path]
       messages[locale] = unflatten(flattendMessage)
-      const ret = writeLocaleMessages(localePath, locale, messages[locale], orderData.value)
+      const ret = writeLocaleMessages(
+        localePath,
+        locale,
+        messages[locale],
+        orderData.value
+      )
       debug('write data', ret)
 
       setSharedData('localeMessages', messages)
@@ -221,7 +237,12 @@ module.exports = api => {
       const flattendMessage = flatten(messages)
       flattendMessage[path] = value
       localeMessages[locale] = unflatten(flattendMessage)
-      writeLocaleMessages(localePath, locale, localeMessages[locale], orderData.value)
+      writeLocaleMessages(
+        localePath,
+        locale,
+        localeMessages[locale],
+        orderData.value
+      )
 
       setSharedData('localeMessages', localeMessages)
       setSharedData('localePaths', getLocalePaths(localeMessages))
@@ -241,11 +262,19 @@ module.exports = api => {
       const orderData = getSharedData('order')
 
       const oldFlattendMessages = flatten(oldMessages[defaultLocale])
-      const newLocaleMessages = Object.keys(oldFlattendMessages).reduce((val, p) => {
-        val[p] = oldFlattendMessages[p]
-        return val
-      }, {})
-      writeLocaleMessages(localePath, locale, unflatten(newLocaleMessages), orderData.value)
+      const newLocaleMessages = Object.keys(oldFlattendMessages).reduce(
+        (val, p) => {
+          val[p] = oldFlattendMessages[p]
+          return val
+        },
+        {}
+      )
+      writeLocaleMessages(
+        localePath,
+        locale,
+        unflatten(newLocaleMessages),
+        orderData.value
+      )
 
       const locales = getLocales(localePath)
       const messages = getLocaleMessages(localePath, locales)
@@ -257,7 +286,11 @@ module.exports = api => {
       debug('add-locale-action: clientLocale', clientLocale)
       api.notify({
         title: i18n.t('org.kazupon.vue-i18n.notification.title', clientLocale),
-        message: i18n.t('org.kazupon.vue-i18n.notification.message', clientLocale, { locale }),
+        message: i18n.t(
+          'org.kazupon.vue-i18n.notification.message',
+          clientLocale,
+          { locale }
+        ),
         icon: 'done'
       })
     })
@@ -273,19 +306,25 @@ module.exports = api => {
         const defaultLocale = env['VUE_APP_I18N_FALLBACK_LOCALE']
         debug('onRead', data, clientLocale, currentLocale, defaultLocale)
         return {
-          prompts: [{
-            type: 'input',
-            name: 'locale',
-            message: 'org.kazupon.vue-i18n.config.prompts.locale.message',
-            description: 'org.kazupon.vue-i18n.config.prompts.locale.description',
-            value: currentLocale || 'en'
-          }, {
-            type: 'input',
-            name: 'fallbackLocale',
-            message: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.message',
-            description: 'org.kazupon.vue-i18n.config.prompts.fallbackLocale.description',
-            value: defaultLocale || 'en'
-          }]
+          prompts: [
+            {
+              type: 'input',
+              name: 'locale',
+              message: 'org.kazupon.vue-i18n.config.prompts.locale.message',
+              description:
+                'org.kazupon.vue-i18n.config.prompts.locale.description',
+              value: currentLocale || 'en'
+            },
+            {
+              type: 'input',
+              name: 'fallbackLocale',
+              message:
+                'org.kazupon.vue-i18n.config.prompts.fallbackLocale.message',
+              description:
+                'org.kazupon.vue-i18n.config.prompts.fallbackLocale.description',
+              value: defaultLocale || 'en'
+            }
+          ]
         }
       },
       onWrite: ({ answers, data, cwd }) => {
@@ -305,34 +344,41 @@ module.exports = api => {
       match: /vue-cli-service i18n:report/,
       description: 'org.kazupon.vue-i18n.task.report.description',
       icon: '/_plugin/vue-cli-plugin-i18n/nav-logo.svg',
-      prompts: [{
-        name: 'type',
-        description: 'org.kazupon.vue-i18n.task.report.prompts.type',
-        type: 'list',
-        default: 'missing & unused',
-        choices: [{
-          name: 'missing & unused',
-          value: 'missing & unused'
-        }, {
-          name: 'missing',
-          value: 'missing'
-        }, {
-          name: 'unused',
-          value: 'unused'
-        }]
-      }, {
-        name: 'output',
-        description: 'org.kazupon.vue-i18n.task.report.prompts.output',
-        type: 'input'
-      }],
+      prompts: [
+        {
+          name: 'type',
+          description: 'org.kazupon.vue-i18n.task.report.prompts.type',
+          type: 'list',
+          default: 'missing & unused',
+          choices: [
+            {
+              name: 'missing & unused',
+              value: 'missing & unused'
+            },
+            {
+              name: 'missing',
+              value: 'missing'
+            },
+            {
+              name: 'unused',
+              value: 'unused'
+            }
+          ]
+        },
+        {
+          name: 'output',
+          description: 'org.kazupon.vue-i18n.task.report.prompts.output',
+          type: 'input'
+        }
+      ],
       onBeforeRun: async ({ answers, args }) => {
-       if (answers.type && answers.type !== 'missing & unused') {
-         args.push('--type', answers.type)
-       }
-       if (answers.output) {
-         args.push('--output', answers.output)
-       }
-      },
+        if (answers.type && answers.type !== 'missing & unused') {
+          args.push('--type', answers.type)
+        }
+        if (answers.output) {
+          args.push('--output', answers.output)
+        }
+      }
     })
 
     api.addView({
@@ -345,7 +391,10 @@ module.exports = api => {
 
     const clientAddonOptions = { id: 'org.kazupon.vue-i18n.client-addon' }
     if (!process.env.VUE_I18N_UI_DEV) {
-      clientAddonOptions['path'] = path.resolve(__dirname, './client-addon-dist')
+      clientAddonOptions['path'] = path.resolve(
+        __dirname,
+        './client-addon-dist'
+      )
     } else {
       clientAddonOptions['url'] = 'http://localhost:8043/index.js'
     }
