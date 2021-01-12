@@ -1,3 +1,20 @@
+## v2.0.0-beta.1 (2021-01-12)
+
+#### :star: Features
+* [#168](https://github.com/intlify/vue-cli-plugin-i18n/pull/168) feat: vue3 and vue-i18n-next supporting ([@kazupon](https://github.com/kazupon))
+* [#167](https://github.com/intlify/vue-cli-plugin-i18n/pull/167) feat: Vue2 latest supporting ([@kazupon](https://github.com/kazupon))
+
+#### :bug: Bug Fixes
+* [#105](https://github.com/intlify/vue-cli-plugin-i18n/pull/105) fix(generator): use quotes in i18n:report script ([@caugner](https://github.com/caugner))
+
+#### :boom: Breaking Change
+* [#166](https://github.com/intlify/vue-cli-plugin-i18n/pull/166) breaking: drop node.js 10 ([@kazupon](https://github.com/kazupon))
+* [#165](https://github.com/intlify/vue-cli-plugin-i18n/pull/165) breaking: drop tsconfig modifying and webpack typing ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 2
+- Claas Augner ([@caugner](https://github.com/caugner))
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 
 ## v1.0.1 (2020-04-24)
 
