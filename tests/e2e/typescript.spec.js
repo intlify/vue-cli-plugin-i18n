@@ -1,7 +1,7 @@
 jest.setTimeout(10 * 60 * 1000)
 jest.mock('inquirer')
 
-const create = require('../helper/create')
+const { create } = require('../helper/create')
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -17,17 +17,22 @@ test(`typescript project`, async () => {
       classComponent: true
     }
   }
-  expectPrompts([{
-    input: 'ja'
-  }, {
-    input: 'ja'
-  }, {
-    input: 'loc'
-  }, {
-    confirm: true
-  }])
+  expectPrompts([
+    {
+      input: 'ja'
+    },
+    {
+      input: 'ja'
+    },
+    {
+      input: 'loc'
+    },
+    {
+      confirm: true
+    }
+  ])
   const project = await create(projectName, { plugins })
-  const pkg = JSON.parse(await project.read('package.json') )
+  const pkg = JSON.parse(await project.read('package.json'))
 
   expect(project.has('.env')).toBe(true)
   expect(project.has('src/i18n.ts')).toBe(true)

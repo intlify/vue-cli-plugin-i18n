@@ -1,6 +1,6 @@
 {
-    "i18n-ally.localesPaths": [
-        "client-addon/src/locales",
-        "tests/fixture/locales"
-    ]
+  "i18n-ally.localesPaths": [
+    "client-addon/src/locales",
+    "tests/fixture/locales"
+  ]
 }

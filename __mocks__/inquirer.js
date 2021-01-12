@@ -2,7 +2,9 @@ let pendingAssertions
 
 exports.prompt = prompts => {
   if (!pendingAssertions) {
-    throw new Error(`inquirer was mocked and used without pending assertions: ${prompts}`)
+    throw new Error(
+      `inquirer was mocked and used without pending assertions: ${prompts}`
+    )
   }
 
   const answers = {}
@@ -20,9 +22,7 @@ exports.prompt = prompts => {
           throw new Error(`validation failed for prompt: ${prompt}`)
         }
       }
-      answers[prompt.name] = prompt.filter
-        ? prompt.filter(val)
-        : val
+      answers[prompt.name] = prompt.filter ? prompt.filter(val) : val
     }
 
     const a = pendingAssertions[index - skipped]
@@ -33,15 +33,17 @@ exports.prompt = prompts => {
     }
 
     if (a.message) {
-      const message = typeof prompt.message === 'function'
-        ? prompt.message(answers)
-        : prompt.message
+      const message =
+        typeof prompt.message === 'function'
+          ? prompt.message(answers)
+          : prompt.message
       expect(message).toMatch(a.message)
     }
 
-    const choices = typeof prompt.choices === 'function'
-      ? prompt.choices(answers)
-      : prompt.choices
+    const choices =
+      typeof prompt.choices === 'function'
+        ? prompt.choices(answers)
+        : prompt.choices
     if (a.choices) {
       expect(choices.length).toBe(a.choices.length)
       a.choices.forEach((c, i) => {

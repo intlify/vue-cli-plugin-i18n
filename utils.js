@@ -2,11 +2,11 @@ const fs = require('fs')
 const path = require('path')
 const dotenv = require('dotenv')
 
-function isObject (obj) {
+function isObject(obj) {
   return obj !== null && typeof obj === 'object'
 }
 
-function checkInstalled (target) {
+function checkInstalled(target) {
   let ret = true
   try {
     const resolveModule = require(path.resolve(target))
@@ -19,7 +19,7 @@ function checkInstalled (target) {
   return ret
 }
 
-function exists (path) {
+function exists(path) {
   let ret = true
   try {
     fs.accessSync(path, fs.constants.F_OK)
@@ -29,7 +29,7 @@ function exists (path) {
   return ret
 }
 
-function mkdir (path) {
+function mkdir(path) {
   let ret = true
   try {
     fs.mkdirSync(path)
@@ -39,7 +39,7 @@ function mkdir (path) {
   return ret
 }
 
-function writeFile (path, content) {
+function writeFile(path, content) {
   let ret = true
   try {
     fs.writeFileSync(path, content, { encoding: 'utf8' })
@@ -49,7 +49,7 @@ function writeFile (path, content) {
   return ret
 }
 
-function readFile (path) {
+function readFile(path) {
   let ret = ''
   try {
     ret = fs.readFileSync(path, { encoding: 'utf8' })
@@ -59,7 +59,7 @@ function readFile (path) {
   return ret
 }
 
-function readEnv (path) {
+function readEnv(path) {
   let ret = {}
   try {
     ret = dotenv.parse(Buffer.from(readFile(path)))
@@ -70,7 +70,7 @@ function readEnv (path) {
   return ret
 }
 
-function buildEnvContent (values) {
+function buildEnvContent(values) {
   let content = ''
   Object.keys(values).forEach(key => {
     content += `${key}=${values[key]}\n`
@@ -78,7 +78,7 @@ function buildEnvContent (values) {
   return content
 }
 
-function sortObject (obj, order = 'asc') {
+function sortObject(obj, order = 'asc') {
   const keys = Object.keys(obj)
   const sortedKeys = order === 'asc' ? keys.sort() : keys.reverse()
   return sortedKeys.reduce((val, key) => {

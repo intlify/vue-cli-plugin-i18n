@@ -1,7 +1,7 @@
 jest.setTimeout(10 * 60 * 1000)
 jest.mock('inquirer')
 
-const create = require('../helper/create')
+const { create } = require('../helper/create')
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -12,19 +12,24 @@ test(`javascript project`, async () => {
 
   const projectName = `vue-i18n-js`
   const plugins = {
-    '@vue/cli-plugin-babel': {},
+    '@vue/cli-plugin-babel': {}
   }
-  expectPrompts([{
-    useDefault: true
-  }, {
-    useDefault: true
-  }, {
-    useDefault: true
-  }, {
-    useDefault: true
-  }])
+  expectPrompts([
+    {
+      useDefault: true
+    },
+    {
+      useDefault: true
+    },
+    {
+      useDefault: true
+    },
+    {
+      useDefault: true
+    }
+  ])
   const project = await create(projectName, { plugins })
-  const pkg = JSON.parse(await project.read('package.json') )
+  const pkg = JSON.parse(await project.read('package.json'))
 
   expect(project.has('.env')).toBe(true)
   expect(project.has('src/i18n.js')).toBe(true)

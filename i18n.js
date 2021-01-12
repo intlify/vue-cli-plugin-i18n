@@ -6,7 +6,7 @@ const VueI18n = require('vue-i18n')
 
 Vue.use(VueI18n)
 
-function loadLocaleMessages () {
+function loadLocaleMessages() {
   const targetPath = path.resolve(__dirname, './client-addon/src/locales')
   const locales = fs.readdirSync(targetPath).map(locale => {
     return path.basename(locale, '.json')
