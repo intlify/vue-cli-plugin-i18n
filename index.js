@@ -1,8 +1,9 @@
+const webpack = require('webpack')
 const path = require('path')
 const debug = require('debug')('vue-cli-plugin-i18n:service')
 
 module.exports = (api, options) => {
-  const { enableInSFC, localeDir } = options.pluginOptions.i18n
+  const { enableInSFC, localeDir, runtimeOnly, compositionOnly, fullInstall } = options.pluginOptions.i18n
   debug('options', options)
 
   const { semver, loadModule } = require(require.resolve(
@@ -30,6 +31,22 @@ module.exports = (api, options) => {
         .type('javascript/auto')
         .use('i18n')
         .loader('@intlify/vue-i18n-loader')
+
+      if (runtimeOnly) {
+        webpackConfig.resolve
+          .alias
+          .set('vue-i18n', 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js')
+        debug('set vue-i18n runtime only')
+      }
+
+      const legacyApiFlag = compositionOnly ? 'false' : 'true'
+      const installFlag = fullInstall ? 'true' : 'false'
+      webpackConfig.plugin('vue-i18n-feature-flags')
+        .use(webpack.DefinePlugin, [{
+          __VUE_I18N_LEGACY_API__: legacyApiFlag,
+          __VUE_I18N_FULL_INSTALL__: installFlag
+        }])
+      debug('set __VUE_I18N_LEGACY_API__ and __VUE_I18N_FULL_INSTALL', legacyApiFlag, installFlag)
     })
   } else {
     api.chainWebpack(webpackConfig => {
