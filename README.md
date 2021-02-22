@@ -105,6 +105,35 @@ module.exports = {
 
   Wheather use legacy mode API in Vue I18n. Default `No` in propmpt, for Vue 3 and Vue I18n v9 or later.
 
+### `runtimeOnly`
+- **Type:** `boolean`
+- **Default(No Prompt):** `false`
+
+  Whether or not to use Vue I18n **runtime-only**, set in the `vue-i18n` field of webpack `resolve.alias` option. default Vue I18n (vue-i18n) package.json `module` field will be used.
+  If `true` is specified, Vue I18n (vue-i18n) will use `node_modules/vue-i18n/dist/vue-i18n.runtime.esm-bundler.js`.
+
+  For more details, See [here](https://vue-i18n.intlify.dev/guide/advanced/optimization.html#reduce-bundle-size-with-feature-build-flags)
+
+### `compositionOnly`
+
+- **Type:** `boolean`
+- **Default(No Prompt):** if `enableLegacy` set `false`, `true` else then `false`
+
+  Whether to make vue-i18n's API only composition API. **By default the legacy API is tree-shaken.**
+
+  For more details, See [here](https://vue-i18n.intlify.dev/guide/advanced/optimization.html#reduce-bundle-size-with-feature-build-flags)
+
+### `fullInstall`
+
+- **Type:** `boolean`
+- **Default(No Prompt):** `true`
+
+  Whether to install the full set of APIs, components, etc. provided by Vue I18n. By default, all of them will be installed.
+
+  If `false` is specified, **buld-in components and directive will not be installed in vue and will be tree-shaken.**
+
+  For more details, See [here](https://vue-i18n.intlify.dev/guide/advanced/optimization.html#reduce-bundle-size-with-feature-build-flags)
+
 
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/CHANGELOG.md).
