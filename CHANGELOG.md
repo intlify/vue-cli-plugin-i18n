@@ -1,3 +1,11 @@
+## v2.0.0-rc.1 (2021-02-22)
+
+#### :star: Features
+* [#172](https://github.com/intlify/vue-cli-plugin-i18n/pull/172) feat: add some configration ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.0-beta.1 (2021-01-12)
 
 #### :star: Features
