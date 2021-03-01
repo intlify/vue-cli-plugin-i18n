@@ -1,5 +1,6 @@
 # :globe_with_meridians: vue-cli-plugin-i18n
 
+[![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n/next.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
 ![Test](https://github.com/intlify/vue-cli-plugin-i18n/workflows/Test/badge.svg)
 [![vue-cli-plugin-i18n Dev Token](https://badge.devtoken.rocks/vue-cli-plugin-i18n)](https://devtoken.rocks/package/vue-cli-plugin-i18n)
@@ -21,6 +22,7 @@ If yon don't have a project created with Vue CLI:
 vue create my-vue-app
 ```
 
+### For Vue 2.x
 Install the plugin into your project:
 
 ```sh
@@ -28,6 +30,14 @@ cd my-vue-app
 vue add i18n
 ```
 
+### For Vue 3
+
+Install the plugin into your project:
+
+```sh
+cd my-vue-app
+vue add i18n@next
+```
 
 ## :hammer: Injected Commands
 - **`vue-cli-service i18n:report`** (experimental)
@@ -95,6 +105,7 @@ module.exports = {
 
 - **Type:** `boolean`
 - **Default in prompt:** `false`
+- **Support project Vue version:** Vue 2 only
 
   Wheather enable locale messages in Single file components. Default `No` in propmpt, for Vue 2 and Vue I18n v8.x only.
 
@@ -102,12 +113,14 @@ module.exports = {
 
 - **Type:** `boolean`
 - **Default in prompt:** `false`
+- **Support project Vue version:** Vue 3 only
 
   Wheather use legacy mode API in Vue I18n. Default `No` in propmpt, for Vue 3 and Vue I18n v9 or later.
 
 ### `runtimeOnly`
 - **Type:** `boolean`
 - **Default(No Prompt):** `false`
+- **Support project Vue version:** Vue 3 only
 
   Whether or not to use Vue I18n **runtime-only**, set in the `vue-i18n` field of webpack `resolve.alias` option. default Vue I18n (vue-i18n) package.json `module` field will be used.
   If `true` is specified, Vue I18n (vue-i18n) will use `node_modules/vue-i18n/dist/vue-i18n.runtime.esm-bundler.js`.
@@ -118,6 +131,7 @@ module.exports = {
 
 - **Type:** `boolean`
 - **Default(No Prompt):** if `enableLegacy` set `false`, `true` else then `false`
+- **Support project Vue version:** Vue 3 only
 
   Whether to make vue-i18n's API only composition API. **By default the legacy API is tree-shaken.**
 
@@ -127,6 +141,7 @@ module.exports = {
 
 - **Type:** `boolean`
 - **Default(No Prompt):** `true`
+- **Support project Vue version:** Vue 3 only
 
   Whether to install the full set of APIs, components, etc. provided by Vue I18n. By default, all of them will be installed.
 
