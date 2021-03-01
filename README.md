@@ -22,21 +22,11 @@ If yon don't have a project created with Vue CLI:
 vue create my-vue-app
 ```
 
-### For Vue 2.x
 Install the plugin into your project:
 
 ```sh
 cd my-vue-app
 vue add i18n
-```
-
-### For Vue 3
-
-Install the plugin into your project:
-
-```sh
-cd my-vue-app
-vue add i18n@next
 ```
 
 ## :hammer: Injected Commands
