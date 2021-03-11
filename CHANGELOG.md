@@ -2,6 +2,18 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+## v2.0.1 (2021-03-11)
+
+#### :bug: Bug Fixes
+* [#180](https://github.com/intlify/vue-cli-plugin-i18n/pull/180) fix: suppress esm-bundler warning ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+Version 9 of Highlight.js has reached EOL and is no longer supported.
+Please upgrade or ask whatever dependency you are using to upgrade.
+https://github.com/highlightjs/highlight.js/issues/2877
+
 ## v2.0.0 (2021-03-01)
 
 #### :zap: Improvement Features
