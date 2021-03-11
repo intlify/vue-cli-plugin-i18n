@@ -3,7 +3,13 @@ const path = require('path')
 const debug = require('debug')('vue-cli-plugin-i18n:service')
 
 module.exports = (api, options) => {
-  const { enableInSFC, localeDir, runtimeOnly, compositionOnly, fullInstall } = options.pluginOptions.i18n
+  const {
+    enableInSFC,
+    localeDir,
+    runtimeOnly,
+    compositionOnly,
+    fullInstall
+  } = options.pluginOptions.i18n
   debug('options', options)
 
   const { semver, loadModule } = require(require.resolve(
@@ -17,49 +23,59 @@ module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
       debug('chainWebpack called')
 
+      // prettier-ignore
       webpackConfig.module
         .rule('i18n-resource')
         .test(/\.(json5?|ya?ml)$/)
-        .include.add(path.resolve(__dirname, '../../', `./src/${localeDir}`))
-        .end()
+          .include.add(path.resolve(__dirname, '../../', `./src/${localeDir}`))
+          .end()
         .type('javascript/auto')
         .use('i18n-resource')
-        .loader('@intlify/vue-i18n-loader')
+          .loader('@intlify/vue-i18n-loader')
+      // prettier-ignore
       webpackConfig.module
         .rule('i18n')
         .resourceQuery(/blockType=i18n/)
         .type('javascript/auto')
         .use('i18n')
-        .loader('@intlify/vue-i18n-loader')
+          .loader('@intlify/vue-i18n-loader')
 
       if (runtimeOnly) {
-        webpackConfig.resolve
-          .alias
-          .set('vue-i18n', 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js')
+        webpackConfig.resolve.alias.set(
+          'vue-i18n',
+          'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+        )
         debug('set vue-i18n runtime only')
       }
 
       const legacyApiFlag = compositionOnly ? 'false' : 'true'
       const installFlag = fullInstall ? 'true' : 'false'
-      webpackConfig.plugin('vue-i18n-feature-flags')
-        .use(webpack.DefinePlugin, [{
+      webpackConfig.plugin('vue-i18n-feature-flags').use(webpack.DefinePlugin, [
+        {
           __VUE_I18N_LEGACY_API__: legacyApiFlag,
-          __VUE_I18N_FULL_INSTALL__: installFlag
-        }])
-      debug('set __VUE_I18N_LEGACY_API__ and __VUE_I18N_FULL_INSTALL', legacyApiFlag, installFlag)
+          __VUE_I18N_FULL_INSTALL__: installFlag,
+          __INTLIFY_PROD_DEVTOOLS__: 'false'
+        }
+      ])
+      debug(
+        'set __VUE_I18N_LEGACY_API__ and __VUE_I18N_FULL_INSTALL',
+        legacyApiFlag,
+        installFlag
+      )
     })
   } else {
     api.chainWebpack(webpackConfig => {
       debug('chainWebpack called')
 
       if (enableInSFC) {
+        // prettier-ignore
         webpackConfig.module
           .rule('i18n')
           .resourceQuery(/blockType=i18n/)
           .type('javascript/auto')
           .use('i18n')
-          .loader('@intlify/vue-i18n-loader')
-          .end()
+            .loader('@intlify/vue-i18n-loader')
+            .end()
           .end()
       }
     })
