@@ -2,6 +2,18 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+## v2.0.3 (2021-03-29)
+
+#### :bug: Bug Fixes
+* [#185](https://github.com/intlify/vue-cli-plugin-i18n/pull/185) fix: cannot work legacy mode, when install plugin ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+Version 9 of Highlight.js has reached EOL and is no longer supported.
+Please upgrade or ask whatever dependency you are using to upgrade.
+https://github.com/highlightjs/highlight.js/issues/2877
+
 ## v2.0.2 (2021-03-17)
 
 #### :bug: Bug Fixes
