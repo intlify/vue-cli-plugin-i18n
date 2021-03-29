@@ -7,6 +7,7 @@ module.exports = (api, options) => {
     enableInSFC,
     localeDir,
     runtimeOnly,
+    enableLegacy,
     compositionOnly,
     fullInstall
   } = options.pluginOptions.i18n
@@ -48,7 +49,11 @@ module.exports = (api, options) => {
         debug('set vue-i18n runtime only')
       }
 
-      const legacyApiFlag = compositionOnly ? 'false' : 'true'
+      // prettier-ignore
+      const legacyApiFlag = enableLegacy
+        ? 'true'
+        : compositionOnly
+          ? 'false' : 'true'
       const installFlag = fullInstall ? 'true' : 'false'
       webpackConfig.plugin('vue-i18n-feature-flags').use(webpack.DefinePlugin, [
         {
