@@ -1,3 +1,11 @@
+## v2.1.0 (2021-04-08)
+
+#### :zap: Improvement Features
+* [#188](https://github.com/intlify/vue-cli-plugin-i18n/pull/188) feat: support vue-i18n v9.1 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.3 (2021-03-29)
 
 #### :bug: Bug Fixes
