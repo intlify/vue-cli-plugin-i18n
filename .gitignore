@@ -4,6 +4,7 @@ tests/e2e/projects/vue-i18n-js/
 tests/e2e/projects/vue-i18n-ts/
 tests/output.json
 .DS_Store
+.env
 *.log
 *.swp
 *~

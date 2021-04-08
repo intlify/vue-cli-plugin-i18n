@@ -59,7 +59,7 @@ module.exports = (api, options) => {
         {
           __VUE_I18N_LEGACY_API__: legacyApiFlag,
           __VUE_I18N_FULL_INSTALL__: installFlag,
-          __INTLIFY_PROD_DEVTOOLS__: 'false'
+          __VUE_I18N_PROD_DEVTOOLS__: 'false'
         }
       ])
       debug(
