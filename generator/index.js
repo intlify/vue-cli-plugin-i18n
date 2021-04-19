@@ -96,7 +96,7 @@ module.exports = (api, options, rootOptions) => {
     // locale messages
     const defaultLocaleMessages = JSON.stringify(
       {
-        message: 'hello i18n !!'
+        hello: 'hello i18n !!'
       },
       null,
       2
