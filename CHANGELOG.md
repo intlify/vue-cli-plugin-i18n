@@ -1,7 +1,10 @@
-Version 9 of Highlight.js has reached EOL and is no longer supported.
-Please upgrade or ask whatever dependency you are using to upgrade.
-https://github.com/highlightjs/highlight.js/issues/2877
+## v2.1.2 (2021-07-26)
 
+#### :bug: Bug Fixes
+* [#217](https://github.com/intlify/vue-cli-plugin-i18n/pull/217) fix: can not load locale messages in vue3 ([@PeterAlfredLee](https://github.com/PeterAlfredLee))
+
+#### Committers: 1
+- Lee ([@PeterAlfredLee](https://github.com/PeterAlfredLee))
 
 ## v2.1.0 (2021-04-08)
 
