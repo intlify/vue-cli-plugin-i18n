@@ -96,7 +96,7 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 2 only
 
-  Wheather enable locale messages in Single file components. Default `No` in propmpt, for Vue 2 and Vue I18n v8.x only.
+  Wheather enable locale messages in Single file components. Default `No` in prompt, for Vue 2 and Vue I18n v8.x only.
 
 ### `enableLegacy`
 
@@ -104,7 +104,7 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 3 only
 
-  Wheather use legacy mode API in Vue I18n. Default `No` in propmpt, for Vue 3 and Vue I18n v9 or later.
+  Wheather use legacy mode API in Vue I18n. Default `No` in prompt, for Vue 3 and Vue I18n v9 or later.
 
 ### `runtimeOnly`
 - **Type:** `boolean`
