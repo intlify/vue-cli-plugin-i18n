@@ -29,7 +29,7 @@ test('javascript: legacy', async () => {
   expect(sfc).toMatch(`export default defineComponent({`)
   const pack = files['package.json']
   expect(pack).toMatch(`"vue-i18n": "^9.1.0"`)
-  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^2.1.0"`)
+  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^3.0.0"`)
 })
 
 test('javascript: composition', async () => {
@@ -63,7 +63,7 @@ test('javascript: composition', async () => {
   expect(sfc).toMatch(`const { t } = useI18n({`)
   const pack = files['package.json']
   expect(pack).toMatch(`"vue-i18n": "^9.1.0"`)
-  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^2.1.0"`)
+  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^3.0.0"`)
 })
 
 test('typescript: composition', async () => {
@@ -108,5 +108,5 @@ test('typescript: composition', async () => {
   expect(sfc).toMatch(`const { t } = useI18n({`)
   const pack = files['package.json']
   expect(pack).toMatch(`"vue-i18n": "^9.1.0"`)
-  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^2.1.0"`)
+  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^3.0.0"`)
 })

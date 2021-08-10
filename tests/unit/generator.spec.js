@@ -23,8 +23,8 @@ test('javascript', async () => {
   const locale = files['src/locales/en.json']
   expect(locale).toMatch(`{\n  "message": "hello i18n !!"\n}`)
   const pack = files['package.json']
-  expect(pack).toMatch(`"vue-i18n": "^8.22.3"`)
-  expect(pack).not.toMatch(`"@intlify/vue-i18n-loader": "^1.0.0"`)
+  expect(pack).toMatch(`"vue-i18n": "^8.25.0"`)
+  expect(pack).not.toMatch(`"@intlify/vue-i18n-loader": "^1.1.0"`)
 })
 
 test('typescript', async () => {
@@ -57,6 +57,6 @@ test('typescript', async () => {
   const sfc = files['src/components/HelloI18n.vue']
   expect(sfc).toMatch(`export default Vue.extend({`)
   const pack = files['package.json']
-  expect(pack).toMatch(`"vue-i18n": "^8.22.3"`)
-  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^1.0.0"`)
+  expect(pack).toMatch(`"vue-i18n": "^8.25.0"`)
+  expect(pack).toMatch(`"@intlify/vue-i18n-loader": "^1.1.0"`)
 })
