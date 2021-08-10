@@ -1,3 +1,15 @@
+## v2.1.3 (2021-08-10)
+
+#### :zap: Improvement Features
+* [#225](https://github.com/intlify/vue-cli-plugin-i18n/pull/225) improvement: bump versions ([@kazupon](https://github.com/kazupon))
+
+#### :pencil: Documentation
+* [#224](https://github.com/intlify/vue-cli-plugin-i18n/pull/224) fix: typos in README.md ([@theHacker](https://github.com/theHacker))
+
+#### Committers: 2
+- Alexander Münch ([@theHacker](https://github.com/theHacker))
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.1.2 (2021-07-26)
 
 #### :bug: Bug Fixes
