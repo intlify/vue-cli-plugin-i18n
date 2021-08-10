@@ -53,15 +53,15 @@ module.exports = (api, options, rootOptions) => {
 
     if (isVue3) {
       pkg.dependencies['vue-i18n'] = '^9.1.0'
-      pkg.devDependencies['@intlify/vue-i18n-loader'] = '^2.1.0'
+      pkg.devDependencies['@intlify/vue-i18n-loader'] = '^3.0.0'
       pkg.vue.pluginOptions.i18n['enableLegacy'] = enableLegacy
       pkg.vue.pluginOptions.i18n['runtimeOnly'] = false
       pkg.vue.pluginOptions.i18n['compositionOnly'] = !!enableLegacy
       pkg.vue.pluginOptions.i18n['fullInstall'] = true
     } else {
-      pkg.dependencies['vue-i18n'] = '^8.22.3'
+      pkg.dependencies['vue-i18n'] = '^8.25.0'
       if (enableInSFC) {
-        pkg.devDependencies['@intlify/vue-i18n-loader'] = '^1.0.0'
+        pkg.devDependencies['@intlify/vue-i18n-loader'] = '^1.1.0'
       }
       pkg.vue.pluginOptions.i18n['enableInSFC'] = enableInSFC
     }
