@@ -1,3 +1,15 @@
+Version 9 of Highlight.js has reached EOL and is no longer supported.
+Please upgrade or ask whatever dependency you are using to upgrade.
+https://github.com/highlightjs/highlight.js/issues/2877
+
+## v2.1.4 (2021-09-25)
+
+#### :zap: Improvement Features
+* [#239](https://github.com/intlify/vue-cli-plugin-i18n/pull/239) bump vue-i18n for Vue 2 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.1.3 (2021-08-10)
 
 #### :zap: Improvement Features
