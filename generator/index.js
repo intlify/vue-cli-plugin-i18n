@@ -59,7 +59,7 @@ module.exports = (api, options, rootOptions) => {
       pkg.vue.pluginOptions.i18n['compositionOnly'] = !!enableLegacy
       pkg.vue.pluginOptions.i18n['fullInstall'] = true
     } else {
-      pkg.dependencies['vue-i18n'] = '^8.25.0'
+      pkg.dependencies['vue-i18n'] = '^8.26.1'
       if (enableInSFC) {
         pkg.devDependencies['@intlify/vue-i18n-loader'] = '^1.1.0'
       }
