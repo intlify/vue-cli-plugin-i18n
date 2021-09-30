@@ -6,6 +6,7 @@ const {
   readEnv,
   buildEnvContent
 } = require('../utils')
+const chalk = require(require.resolve('chalk'))
 
 module.exports = (api, options, rootOptions) => {
   const {
@@ -156,6 +157,17 @@ module.exports = (api, options, rootOptions) => {
     if (!writeFile(envPath, buildEnvContent(envVars))) {
       api.exitLog(`cannot write to ${envPath}`, 'error')
       return
+    }
+
+    if (
+      enableBridge &&
+      checkInstalled('./node_modules/@vue/composition-api/package.json')
+    ) {
+      api.exitLog(
+        chalk.yellow.underline(
+          `You need to install '@vue/composition-api' https://github.com/vuejs/composition-api`
+        )
+      )
     }
   })
 }

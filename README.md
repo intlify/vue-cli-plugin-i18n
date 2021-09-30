@@ -114,6 +114,8 @@ module.exports = {
 
   Whether to set up a birdge to migrate to `vue-i18n@v9.x` from `vue-i18n@v8.26`, Default `No` in prompt.
 
+  > ⚠️ NOTE: If you use the Composition API with `vue-i18n-bridge` in birdge mode, you need to install [`@vue/composition-api`](https://github.com/vuejs/composition-api).
+
 ### `includeLocales`
 
 - **Type:** `boolean`
