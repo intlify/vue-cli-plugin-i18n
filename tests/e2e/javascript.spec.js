@@ -26,6 +26,9 @@ test(`javascript project`, async () => {
     },
     {
       useDefault: true
+    },
+    {
+      useDefault: true
     }
   ])
   const project = await create(projectName, { plugins })

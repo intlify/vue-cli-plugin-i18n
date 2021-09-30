@@ -8,6 +8,7 @@ module.exports = (api, options) => {
     localeDir,
     runtimeOnly,
     enableLegacy,
+    enableBridge,
     compositionOnly,
     fullInstall
   } = options.pluginOptions.i18n
@@ -73,15 +74,44 @@ module.exports = (api, options) => {
       debug('chainWebpack called')
 
       if (enableInSFC) {
-        // prettier-ignore
-        webpackConfig.module
-          .rule('i18n')
-          .resourceQuery(/blockType=i18n/)
-          .type('javascript/auto')
-          .use('i18n')
-            .loader('@intlify/vue-i18n-loader')
+        if (!enableBridge) {
+          // prettier-ignore
+          webpackConfig.module
+            .rule('i18n')
+            .resourceQuery(/blockType=i18n/)
+            .type('javascript/auto')
+            .use('i18n')
+              .loader('@intlify/vue-i18n-loader')
+              .end()
             .end()
-          .end()
+        } else {
+          // prettier-ignore
+          webpackConfig.module
+            .rule('i18n-resource')
+            .test(/\.(json5?|ya?ml)$/)
+              .include.add(path.resolve(__dirname, '../../', `./src/${localeDir}`))
+              .end()
+            .type('javascript/auto')
+            .use('i18n-resource')
+              .loader('@intlify/vue-i18n-loader')
+              .options({ bridge: true })
+          // prettier-ignore
+          webpackConfig.module
+            .rule('i18n')
+            .resourceQuery(/blockType=i18n/)
+            .type('javascript/auto')
+            .use('i18n')
+              .loader('@intlify/vue-i18n-loader')
+              .options({ bridge: true })
+
+          if (runtimeOnly) {
+            webpackConfig.resolve.alias.set(
+              'vue-i18n-bridge',
+              'vue-i18n-bridge/dist/vue-i18n-bridge.runtime.esm-bundler.js'
+            )
+            debug('set vue-i18n-bridge runtime only')
+          }
+        }
       }
     })
   }

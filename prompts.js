@@ -45,6 +45,13 @@ module.exports = pkg => {
       message: 'Enable locale messages in Single file components ?',
       default: false
     })
+    prompts.push({
+      type: 'confirm',
+      name: 'enableBridge',
+      message:
+        'Whether to set up a birdge to migrate to vue-i18n@v9.x from vue-i18n@v8.26',
+      default: false
+    })
   }
 
   debug('prompts', prompts)

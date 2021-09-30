@@ -1,4 +1,4 @@
-# :globe_with_meridians: vue-cli-plugin-i18n
+# 🌏 vue-cli-plugin-i18n
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n/next.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-i18n.svg)](https://www.npmjs.com/package/vue-cli-plugin-i18n)
@@ -7,14 +7,14 @@
 
 Vue CLI plugin to add vue-i18n to your Vue Project
 
-## :star: Features
+## 🌟 Features
 - [vue-i18n](https://github.com/kazupon/vue-i18n) basic scaffolding
 - Locale messages in Single File components with [vue-i18n-loader](https://github.com/intlify/vue-i18n-loader)
 - Locale messages missing & unused reporting (experimental)
 - Env Variables
 
 
-## :rocket: Getting Started
+## 🚀 Getting Started
 If yon don't have a project created with Vue CLI:
 
 ```sh
@@ -28,7 +28,7 @@ cd my-vue-app
 vue add i18n
 ```
 
-## :hammer: Injected Commands
+## 🔨 Injected Commands
 - **`vue-cli-service i18n:report`** (experimental)
 
   Report the missing locale message keys and unused keys.
@@ -37,7 +37,7 @@ vue add i18n
 > `vue-cli-service i18n:report` cannot detect missing and unused keys from local messages of i18n custom blocks.
 
 
-## :clipboard: Env variables
+## 📋 Env variables
 When vue-i18n code files had been scaffolded into your project, the following env variables generate into `.env`:
 
 - **`VUE_APP_I18N_LOCALE`**
@@ -51,7 +51,7 @@ When vue-i18n code files had been scaffolded into your project, the following en
 These env variables are read in `src/i18n.(js|ts)`.
 
 
-## :wrench: Configrations
+## 🔧 Configrations
 
 `vue-cli-plugin-i18n` have some plugin options in `vue.config.js`:
 
@@ -106,6 +106,14 @@ module.exports = {
 
   Wheather use legacy mode API in Vue I18n. Default `No` in prompt, for Vue 3 and Vue I18n v9 or later.
 
+### `enableBridge`
+
+- **Type:** `boolean`
+- **Default in prompt:** `false`
+- **Support project Vue version:** Vue 2 only
+
+  Whether to set up a birdge to migrate to `vue-i18n@v9.x` from `vue-i18n@v8.26`, Default `No` in prompt.
+
 ### `runtimeOnly`
 - **Type:** `boolean`
 - **Default(No Prompt):** `false`
@@ -139,21 +147,21 @@ module.exports = {
   For more details, See [here](https://vue-i18n.intlify.dev/guide/advanced/optimization.html#reduce-bundle-size-with-feature-build-flags)
 
 
-## :scroll: Changelog
+## 📜 Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/CHANGELOG.md).
 
 
-## :exclamation: Issues
+## ❗ Issues
 Please make sure to read the [Issue Reporting Checklist](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
 
-## :white_check_mark: TODO
+## ✅ TODO
 Managed with [GitHub Projects](https://github.com/intlify/vue-cli-plugin-i18n/projects/1)
 
-## :muscle: Contribution
+## 💪 Contribution
 Please make sure to read the [Contributing Guide](https://github.com/intlify/vue-cli-plugin-i18n/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 
-## :copyright: License
+## ©️ License
 
 [MIT](http://opensource.org/licenses/MIT)
