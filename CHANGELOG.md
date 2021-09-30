@@ -1,3 +1,15 @@
+Version 9 of Highlight.js has reached EOL and is no longer supported.
+Please upgrade or ask whatever dependency you are using to upgrade.
+https://github.com/highlightjs/highlight.js/issues/2877
+
+## v2.3.0 (2021-09-30)
+
+#### :star: Features
+* [#243](https://github.com/intlify/vue-cli-plugin-i18n/pull/243) feat: `includeLocales` option ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.2.0 (2021-09-30)
 
 #### :star: Features
