@@ -29,6 +29,9 @@ test(`typescript project`, async () => {
     },
     {
       confirm: true
+    },
+    {
+      useDefault: true
     }
   ])
   const project = await create(projectName, { plugins })

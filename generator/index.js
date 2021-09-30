@@ -13,7 +13,8 @@ module.exports = (api, options, rootOptions) => {
     fallbackLocale,
     localeDir,
     enableLegacy,
-    enableInSFC
+    enableInSFC,
+    enableBridge
   } = options
   debug('options', options)
   debug('rootOptions', rootOptions)
@@ -59,11 +60,16 @@ module.exports = (api, options, rootOptions) => {
       pkg.vue.pluginOptions.i18n['compositionOnly'] = !!enableLegacy
       pkg.vue.pluginOptions.i18n['fullInstall'] = true
     } else {
-      pkg.dependencies['vue-i18n'] = '^8.26.1'
+      pkg.dependencies['vue-i18n'] = '^8.26.3'
       if (enableInSFC) {
         pkg.devDependencies['@intlify/vue-i18n-loader'] = '^1.1.0'
       }
       pkg.vue.pluginOptions.i18n['enableInSFC'] = enableInSFC
+      if (enableBridge) {
+        pkg.devDependencies['@intlify/vue-i18n-loader'] = '^3.2.0'
+        pkg.dependencies['vue-i18n-bridge'] = '^9.2.0-beta.10'
+      }
+      pkg.vue.pluginOptions.i18n['enableBridge'] = enableBridge
     }
     debug('pkg', pkg)
 
