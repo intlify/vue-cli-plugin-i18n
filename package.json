@@ -1,7 +1,7 @@
 {
   "name": "vue-cli-plugin-i18n",
   "description": "Vue CLI plugin to add vue-i18n to your Vue Project",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": {
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
