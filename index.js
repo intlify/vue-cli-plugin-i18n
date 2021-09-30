@@ -9,6 +9,7 @@ module.exports = (api, options) => {
     runtimeOnly,
     enableLegacy,
     enableBridge,
+    includeLocales,
     compositionOnly,
     fullInstall
   } = options.pluginOptions.i18n
@@ -86,15 +87,17 @@ module.exports = (api, options) => {
             .end()
         } else {
           // prettier-ignore
-          webpackConfig.module
-            .rule('i18n-resource')
-            .test(/\.(json5?|ya?ml)$/)
-              .include.add(path.resolve(__dirname, '../../', `./src/${localeDir}`))
-              .end()
-            .type('javascript/auto')
-            .use('i18n-resource')
-              .loader('@intlify/vue-i18n-loader')
-              .options({ bridge: true })
+          if (includeLocales) {
+            webpackConfig.module
+              .rule('i18n-resource')
+              .test(/\.(json5?|ya?ml)$/)
+                .include.add(path.resolve(__dirname, '../../', `./src/${localeDir}`))
+                .end()
+              .type('javascript/auto')
+              .use('i18n-resource')
+                .loader('@intlify/vue-i18n-loader')
+                .options({ bridge: true })
+          }
           // prettier-ignore
           webpackConfig.module
             .rule('i18n')

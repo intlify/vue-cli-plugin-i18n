@@ -114,6 +114,16 @@ module.exports = {
 
   Whether to set up a birdge to migrate to `vue-i18n@v9.x` from `vue-i18n@v8.26`, Default `No` in prompt.
 
+### `includeLocales`
+
+- **Type:** `boolean`
+- **Default in prompt:** `false`
+- **Support project Vue version:** Vue 2 only
+
+  When `enableBridge` is `true`, i.e. in birdge mode, whether localization messags placed in `localeDir` option should be pre-compiled by message compiler or not.
+
+  If you use Composition API in bridge mode, this option must be `true` because all localization messages are bundled during production build.
+
 ### `runtimeOnly`
 - **Type:** `boolean`
 - **Default(No Prompt):** `false`
