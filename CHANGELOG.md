@@ -1,3 +1,11 @@
+## v2.2.0 (2021-09-30)
+
+#### :star: Features
+* [#241](https://github.com/intlify/vue-cli-plugin-i18n/pull/241) feat: vue-i18n-loader bridge mode ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.1.4 (2021-09-25)
 
 #### :zap: Improvement Features
