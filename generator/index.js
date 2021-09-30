@@ -68,6 +68,7 @@ module.exports = (api, options, rootOptions) => {
       if (enableBridge) {
         pkg.devDependencies['@intlify/vue-i18n-loader'] = '^3.2.0'
         pkg.dependencies['vue-i18n-bridge'] = '^9.2.0-beta.10'
+        pkg.vue.pluginOptions.i18n['includeLocales'] = false
       }
       pkg.vue.pluginOptions.i18n['enableBridge'] = enableBridge
     }
