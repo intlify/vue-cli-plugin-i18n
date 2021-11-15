@@ -51,7 +51,7 @@ When vue-i18n code files had been scaffolded into your project, the following en
 These env variables are read in `src/i18n.(js|ts)`.
 
 
-## 🔧 Configrations
+## 🔧 Configurations
 
 `vue-cli-plugin-i18n` have some plugin options in `vue.config.js`:
 
@@ -96,7 +96,7 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 2 only
 
-  Wheather enable locale messages in Single file components. Default `No` in prompt, for Vue 2 and Vue I18n v8.x only.
+  Whether enable locale messages in Single file components. Default `No` in prompt, for Vue 2 and Vue I18n v8.x only.
 
 ### `enableLegacy`
 
@@ -104,7 +104,7 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 3 only
 
-  Wheather use legacy mode API in Vue I18n. Default `No` in prompt, for Vue 3 and Vue I18n v9 or later.
+  Whether use legacy mode API in Vue I18n. Default `No` in prompt, for Vue 3 and Vue I18n v9 or later.
 
 ### `enableBridge`
 
@@ -112,9 +112,9 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 2 only
 
-  Whether to set up a birdge to migrate to `vue-i18n@v9.x` from `vue-i18n@v8.26`, Default `No` in prompt.
+  Whether to set up a bridge to migrate to `vue-i18n@v9.x` from `vue-i18n@v8.26`, Default `No` in prompt.
 
-  > ⚠️ NOTE: If you use the Composition API with `vue-i18n-bridge` in birdge mode, you need to install [`@vue/composition-api`](https://github.com/vuejs/composition-api).
+  > ⚠️ NOTE: If you use the Composition API with `vue-i18n-bridge` in bridge mode, you need to install [`@vue/composition-api`](https://github.com/vuejs/composition-api).
 
 ### `includeLocales`
 
@@ -122,7 +122,7 @@ module.exports = {
 - **Default in prompt:** `false`
 - **Support project Vue version:** Vue 2 only
 
-  When `enableBridge` is `true`, i.e. in birdge mode, whether localization messags placed in `localeDir` option should be pre-compiled by message compiler or not.
+  When `enableBridge` is `true`, i.e. in bridge mode, whether localization messages placed in `localeDir` option should be pre-compiled by message compiler or not.
 
   If you use Composition API in bridge mode, this option must be `true` because all localization messages are bundled during production build.
 
@@ -154,7 +154,7 @@ module.exports = {
 
   Whether to install the full set of APIs, components, etc. provided by Vue I18n. By default, all of them will be installed.
 
-  If `false` is specified, **buld-in components and directive will not be installed in vue and will be tree-shaken.**
+  If `false` is specified, **build-in components and directive will not be installed in vue and will be tree-shaken.**
 
   For more details, See [here](https://vue-i18n.intlify.dev/guide/advanced/optimization.html#reduce-bundle-size-with-feature-build-flags)
 
