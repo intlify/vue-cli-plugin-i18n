@@ -199,7 +199,7 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 ### :star: New Features
 
-* locale configration ([44544f7](https://github.com/kazupon/vue-cli-plugin-i18n/commit/44544f7)), closes [#11](https://github.com/kazupon/vue-cli-plugin-i18n/issues/11)
+* locale configuration ([44544f7](https://github.com/kazupon/vue-cli-plugin-i18n/commit/44544f7)), closes [#11](https://github.com/kazupon/vue-cli-plugin-i18n/issues/11)
 
 
 
